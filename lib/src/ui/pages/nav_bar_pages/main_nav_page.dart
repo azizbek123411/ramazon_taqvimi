@@ -12,6 +12,7 @@ import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/settings_page.dart';
 import '../../../config/appColors.dart';
 
 class MainNavpage extends StatefulWidget {
+  static const String id='main';
   const MainNavpage({super.key});
 
   @override
