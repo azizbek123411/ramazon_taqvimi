@@ -3,6 +3,9 @@ import 'package:ramazon_taqvimi/src/config/appColors.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
+import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/azon_settings.dart';
+import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/connect_screen.dart';
+import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/language_settings.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/time_settings.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/settings_list_tile.dart';
 
@@ -49,15 +52,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   size: 20,
                   color: AppColors.blackColor,
                 ),
-                onTap: () {},
-                title: "Azon sozlmari"),
+                onTap: () {
+                  AppRouter.go(context, const AzonSettings());
+                },
+                title: "Azon sozlamari"),
             SettingsListTile(
                 trailing: Icon(
                   Icons.arrow_forward_ios,
                   size: 20,
                   color: AppColors.blackColor,
                 ),
-                onTap: () {},
+                onTap: () {
+                  AppRouter.go(context, const LanguageSettings());
+                },
                 title: "Ilova tili"),
             SettingsListTile(
                 trailing: Icon(
@@ -65,7 +72,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   size: 20,
                   color: AppColors.blackColor,
                 ),
-                onTap: () {},
+                onTap: () {
+                  AppRouter.go(context, const Connect());
+                },
                 title: "Murojaat"),
           ],
         ),
