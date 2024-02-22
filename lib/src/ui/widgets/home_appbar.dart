@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 
-import '../../../config/appColors.dart';
-import '../../../config/font_size.dart';
-import '../../../repository/constants/text_styles.dart';
-import '../../../repository/utils/app_padding.dart';
+import '../../config/appColors.dart';
+import '../../config/font_size.dart';
+import '../../repository/constants/text_styles.dart';
+import '../../repository/utils/app_padding.dart';
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
 

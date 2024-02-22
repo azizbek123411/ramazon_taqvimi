@@ -10,7 +10,7 @@ import 'package:ramazon_taqvimi/src/repository/utils/space.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/date_screen.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/main_green_button.dart';
 
-import '../../widgets/home_page_widgets/home_appbar.dart';
+import '../../widgets/home_appbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

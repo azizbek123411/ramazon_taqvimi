@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/config/appColors.dart';
-class MainGreenButton extends StatelessWidget {
+class  MainGreenButton extends StatelessWidget {
   double h;
   double w;
   Widget child;
