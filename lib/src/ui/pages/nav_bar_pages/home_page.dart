@@ -8,6 +8,7 @@ import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/space.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/date_screen.dart';
+import 'package:ramazon_taqvimi/src/ui/widgets/bottom_sheet.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/main_green_button.dart';
 
 import '../../widgets/home_appbar.dart';
@@ -97,7 +98,12 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       MainGreenButton(
-                        onTap: (){},
+                          onTap: () {
+                            showModalBottomSheet(context: context, builder: (BuildContext context)
+                            {
+                              return BottomSheetHOme(h: 360.h);
+                            });
+                          },
                           h: 61.h,
                           w: 149.w,
                           radius: 8,
@@ -119,27 +125,32 @@ class _HomePageState extends State<HomePage> {
                             ],
                           )),
                       MainGreenButton(
-                          onTap: (){},
-                          h: 61.h,
-                          w: 149.w,
-                          radius: 8,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                "04 : 00 AM",
-                                style: AppTextStyle.instance.w700.copyWith(
-                                    fontSize: FontSizeConst.instance.mediumFont,
-                                    color: AppColors.whiteColor),
-                              ),
-                              Text(
-                                "Og’iz yopish duosi",
-                                style: AppTextStyle.instance.w700.copyWith(
-                                    fontSize: FontSizeConst.instance.smallFont,
-                                    color: AppColors.whiteColor),
-                              ),
-                            ],
-                          ),
+                        onTap: () {
+                          showModalBottomSheet(context: context, builder: (BuildContext context)
+                          {
+                            return BottomSheetHOme(h: 360.h);
+                          });
+                        },
+                        h: 61.h,
+                        w: 149.w,
+                        radius: 8,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "04 : 00 AM",
+                              style: AppTextStyle.instance.w700.copyWith(
+                                  fontSize: FontSizeConst.instance.mediumFont,
+                                  color: AppColors.whiteColor),
+                            ),
+                            Text(
+                              "Og’iz yopish duosi",
+                              style: AppTextStyle.instance.w700.copyWith(
+                                  fontSize: FontSizeConst.instance.smallFont,
+                                  color: AppColors.whiteColor),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   )

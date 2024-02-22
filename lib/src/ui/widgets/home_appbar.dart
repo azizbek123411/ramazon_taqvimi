@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
+import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/notification.dart';
 
 import '../../config/appColors.dart';
 import '../../config/font_size.dart';
@@ -44,7 +46,9 @@ class HomeAppBar extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              AppRouter.go(context, const NotificationScreen());
+            },
             icon: SvgPicture.asset(
               'assets/svg/BellOutline.svg',
               height: 24.h,
