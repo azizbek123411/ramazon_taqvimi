@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ramazon_taqvimi/apipage.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/home_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/main_nav_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/splash_page/scroll_pag.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:const SplashPage(),
+      // home:const SplashPage(),
+      home:const ApiPage(),
       routes: {
         ScrollPage.id:(context)=>const ScrollPage(),
         MainNavpage.id:(context)=>const MainNavpage(),
