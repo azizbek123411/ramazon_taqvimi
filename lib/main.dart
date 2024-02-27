@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ramazon_taqvimi/apipage.dart';
-import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/home_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/main_nav_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/splash_page/scroll_pag.dart';
-import 'package:ramazon_taqvimi/src/ui/pages/splash_page/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home:const SplashPage(),
-      home:const ApiPage(),
+      home:const NewPage(),
       routes: {
         ScrollPage.id:(context)=>const ScrollPage(),
         MainNavpage.id:(context)=>const MainNavpage(),

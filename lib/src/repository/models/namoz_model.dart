@@ -1,291 +1,94 @@
+
 class NamozModel {
-  int? code;
-  String? status;
-  List<Data>? data;
+  String region;
+  DateTime date;
+  String weekday;
+  HijriDate hijri_date;
+  Times times;
 
-  NamozModel({this.code, this.status, this.data});
+  NamozModel(
+      {required this.region,
+      required this.date,
+      required this.weekday,
+      required this.hijri_date,
+      required this.times,});
 
-  NamozModel.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    status = json['status'];
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
-      });
-    }
+  factory NamozModel.fromJson(Map<String, dynamic> json) {
+    HijriDate hijri_date = HijriDate.fromJson(json["hijri_date"]);
+    Times times = Times.fromJson(json["times"]);
+    return NamozModel(
+        region: json['region'],
+        date: DateTime.parse(json['date']),
+        weekday: json['weekday'],
+        hijri_date: hijri_date,
+        times: times,);
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['code'] = code;
-    data['status'] = status;
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
+  Map<String,dynamic>toJson(){
+    Map<String,dynamic> data=<String,dynamic>{};
+    data["region"]=region;
+    data["date"]=date;
+    data["weekday"]=weekday;
+    data["hijri_date"]=hijri_date;
+    data["times"]=times;
     return data;
   }
 }
 
-class Data {
-  Timings? timings;
-  Date? date;
+class HijriDate {
+  String month;
+  int day;
 
-  Data({this.timings, this.date});
+  HijriDate({
+    required this.month,
+    required this.day,
+  });
 
-  Data.fromJson(Map<String, dynamic> json) {
-    timings =
-    json['timings'] != null ? Timings.fromJson(json['timings']) : null;
-    date = json['date'] != null ? Date.fromJson(json['date']) : null;
+  factory HijriDate.fromJson(Map<String, dynamic> json) {
+    return HijriDate(month: json['month'], day: json['day']);
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (timings != null) {
-      data['timings'] = timings!.toJson();
-    }
-    if (date != null) {
-      data['date'] = date!.toJson();
-    }
+    Map<String, dynamic> data = <String, dynamic>{};
+    data["month"] = month;
+    data["day"] = day;
     return data;
   }
 }
 
-class Timings {
-  String? fajr;
-  String? sunrise;
-  String? dhuhr;
-  String? asr;
-  String? sunset;
-  String? maghrib;
-  String? isha;
-  String? imsak;
-  String? midnight;
+class Times {
+  String tong_saharlik;
+  String quyosh;
+  String peshin;
+  String asr;
+  String shom_iftor;
+  String hufton;
 
-  Timings(
-      {this.fajr,
-        this.sunrise,
-        this.dhuhr,
-        this.asr,
-        this.sunset,
-        this.maghrib,
-        this.isha,
-        this.imsak,
-        this.midnight});
+  Times(
+      {required this.tong_saharlik,
+      required this.quyosh,
+      required this.peshin,
+      required this.asr,
+      required this.shom_iftor,
+      required this.hufton});
 
-  Timings.fromJson(Map<String, dynamic> json) {
-    fajr = json['Fajr'];
-    sunrise = json['Sunrise'];
-    dhuhr = json['Dhuhr'];
-    asr = json['Asr'];
-    sunset = json['Sunset'];
-    maghrib = json['Maghrib'];
-    isha = json['Isha'];
-    imsak = json['Imsak'];
-    midnight = json['Midnight'];
+  factory Times.fromJson(Map<String, dynamic> json) {
+    return Times(
+      tong_saharlik: json["tong_saharlik"],
+      quyosh: json["quyosh"],
+      peshin: json["peshin"],
+      asr: json["asr"],
+      shom_iftor: json["shom_iftor"],
+      hufton: json["hufton"],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['Fajr'] = fajr;
-    data['Sunrise'] = sunrise;
-    data['Dhuhr'] = dhuhr;
-    data['Asr'] = asr;
-    data['Sunset'] = sunset;
-    data['Maghrib'] = maghrib;
-    data['Isha'] = isha;
-    data['Imsak'] = imsak;
-    data['Midnight'] = midnight;
-    return data;
-  }
-}
-
-class Date {
-  String? readable;
-  String? timestamp;
-  Gregorian? gregorian;
-  Hijri? hijri;
-
-  Date({this.readable, this.timestamp, this.gregorian, this.hijri});
-
-  Date.fromJson(Map<String, dynamic> json) {
-    readable = json['readable'];
-    timestamp = json['timestamp'];
-    gregorian = json['gregorian'] != null
-        ? Gregorian.fromJson(json['gregorian'])
-        : null;
-    hijri = json['hijri'] != null ? Hijri.fromJson(json['hijri']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['readable'] = readable;
-    data['timestamp'] = timestamp;
-    if (gregorian != null) {
-      data['gregorian'] = gregorian!.toJson();
-    }
-    if (hijri != null) {
-      data['hijri'] = hijri!.toJson();
-    }
-    return data;
-  }
-}
-
-class Gregorian {
-  String? date;
-  String? format;
-  String? day;
-  Weekday? weekday;
-  Month? month;
-  String? year;
-
-  Gregorian(
-      {this.date, this.format, this.day, this.weekday, this.month, this.year});
-
-  Gregorian.fromJson(Map<String, dynamic> json) {
-    date = json['date'];
-    format = json['format'];
-    day = json['day'];
-    weekday =
-    json['weekday'] != null ? Weekday.fromJson(json['weekday']) : null;
-    month = json['month'] != null ? Month.fromJson(json['month']) : null;
-    year = json['year'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['date'] = date;
-    data['format'] = format;
-    data['day'] = day;
-    if (weekday != null) {
-      data['weekday'] = weekday!.toJson();
-    }
-    if (month != null) {
-      data['month'] = month!.toJson();
-    }
-    data['year'] = year;
-    return data;
-  }
-}
-
-class Weekday {
-  String? en;
-
-  Weekday({this.en});
-
-  Weekday.fromJson(Map<String, dynamic> json) {
-    en = json['en'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['en'] = en;
-    return data;
-  }
-}
-
-class Month {
-  int? number;
-  String? en;
-
-  Month({this.number, this.en});
-
-  Month.fromJson(Map<String, dynamic> json) {
-    number = json['number'];
-    en = json['en'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['number'] = number;
-    data['en'] = en;
-    return data;
-  }
-}
-
-class Hijri {
-  String? date;
-  String? format;
-  String? day;
-  Weekday? weekday;
-  Month? month;
-  String? year;
-  List<String>? holidays;
-
-  Hijri(
-      {this.date,
-        this.format,
-        this.day,
-        this.weekday,
-        this.month,
-        this.year,
-        this.holidays});
-
-  Hijri.fromJson(Map<String, dynamic> json) {
-    date = json['date'];
-    format = json['format'];
-    day = json['day'];
-    weekday =
-    json['weekday'] != null ? Weekday.fromJson(json['weekday']) : null;
-    month = json['month'] != null ? Month.fromJson(json['month']) : null;
-    year = json['year'];
-    holidays = json['holidays'].cast<String>();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['date'] = date;
-    data['format'] = format;
-    data['day'] = day;
-    if (weekday != null) {
-      data['weekday'] = weekday!.toJson();
-    }
-    if (month != null) {
-      data['month'] = month!.toJson();
-    }
-    data['year'] = year;
-    data['holidays'] = holidays;
-    return data;
-  }
-}
-
-class ArabicWeekday {
-  String? eng;
-  String? ar;
-
-  ArabicWeekday({this.eng, this.ar});
-
-  ArabicWeekday.fromJson(Map<String, dynamic> json) {
-    eng = json['eng'];
-    ar = json['ar'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['eng'] = eng;
-    data['ar'] = ar;
-    return data;
-  }
-}
-
-class ArabicMonth {
-  int? number;
-  String? en;
-  String? ar;
-
-  ArabicMonth({this.number, this.en, this.ar});
-
-  ArabicMonth.fromJson(Map<String, dynamic> json) {
-    number = json['number'];
-    en = json['en'];
-    ar = json['ar'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['number'] = number;
-    data['en'] = en;
-    data['ar'] = ar;
+    Map<String, dynamic> data = <String, dynamic>{};
+    data["tong_saharlik"] = tong_saharlik;
+    data["quyosh"] = quyosh;
+    data["peshin"] = peshin;
+    data["shom_iftor"] = shom_iftor;
+    data["hufton"] = hufton;
     return data;
   }
 }

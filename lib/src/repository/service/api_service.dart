@@ -4,40 +4,34 @@ import 'dart:developer';
 import 'package:http/http.dart';
 import 'package:ramazon_taqvimi/src/repository/models/namoz_model.dart';
 
-///http://api.aladhan.com/v1/calendarByCity/2017/4?city=London&country=UnitedKingdom&method=2
 class ApiService {
-  static const String base = "api.aladhan.com";
 
-  static String resultPath({
+  static const String base = "islomapi.uz";
+
+  static resultPath({
     required String city,
-    required String country,
-    required int month,
-    required int year,
   }) {
-    return "/v1/calendarByCity/year=$year/month=$month?city=$city&country=$country&method=2";
+    final Uri uri=Uri.parse("https://islomapi.uz/api/present/day?region=$city");
+    return uri;
   }
 
-  static Future<List<NamozModel>> getTimes({
+  static Future getData({
     required String city,
-    required String country,
-    required int month,
-    required int year,
-  })async {
-    List <NamozModel> getTimes=[];
-    Uri uri =Uri.https(base,resultPath(city: city, month: month,country: country,year: year));
-    final response=await get(uri);
-    if(response.statusCode==200){
+  }) async {
+    List  getTimes=[];
+    final response = await get(resultPath(city: city));
+    log(response.body);
+    if (response.statusCode == 200) {
       final dataList=jsonDecode(response.body);
       for(final item in dataList){
         try{
           getTimes.add(NamozModel.fromJson(item));
-        }catch(error,st){
-          log("Error:",error: error,stackTrace: st);
+        }catch(e,st){
+          log("Error",error: e,stackTrace: st);
         }
       }
     }
-log(response.body);
+    log(response.body);
     return getTimes;
-
   }
 }
