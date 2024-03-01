@@ -31,7 +31,7 @@ class NamozListTile extends StatelessWidget {
           ),
         ),
         subtitle:  Text(
-          "06:19-07:37",
+         hours  ,
           style: AppTextStyle.instance.w700.copyWith(
             color: AppColors.blackColor,
             fontSize: FontSizeConst.instance.mediumFont,
