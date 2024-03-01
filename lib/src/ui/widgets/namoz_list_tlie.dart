@@ -7,7 +7,9 @@ import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 
 class NamozListTile extends StatelessWidget {
-  const NamozListTile({super.key});
+  String namozTiming;
+  String hours;
+   NamozListTile({super.key,required this.hours,required this.namozTiming});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class NamozListTile extends StatelessWidget {
       child: ListTile(
         leading: SvgPicture.asset("assets/svg/sunset.svg"),
         title: Text(
-          "Bomdod",
+          namozTiming,
           style: AppTextStyle.instance.w500.copyWith(
             color: AppColors.blackColor,
             fontSize: FontSizeConst.instance.smallFont,

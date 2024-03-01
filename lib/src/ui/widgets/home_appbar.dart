@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/notification.dart';
@@ -7,12 +10,14 @@ import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/notification.da
 import '../../config/appColors.dart';
 import '../../config/font_size.dart';
 import '../../repository/constants/text_styles.dart';
+import '../../repository/providers/times_provider.dart';
 import '../../repository/utils/app_padding.dart';
-class HomeAppBar extends StatelessWidget {
+class HomeAppBar extends ConsumerWidget {
   const HomeAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,ref) {
+    final provider = ref.watch(namozTimes);
     return  Container(
       padding: Dis.only(lr: 8.w, top: 40.h),
       decoration: BoxDecoration(
@@ -28,13 +33,21 @@ class HomeAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "1 Ramazon 1444 Hijira",
-              style: AppTextStyle.instance.w600.copyWith(
-                fontSize: FontSizeConst.instance.mediumFont,
-                color: AppColors.whiteColor,
-              ),
-            ),
+            provider.when(data: (data){
+              return Text(
+                "${data!.date}",
+                style: AppTextStyle.instance.w600.copyWith(
+                  fontSize: FontSizeConst.instance.mediumFont,
+                  color: AppColors.whiteColor,
+                ),
+              );
+            },
+                error: (error,st){
+              return Text(error.toString());
+              // log(error.toString());
+            }, loading: (){
+              return const CircularProgressIndicator();
+            }),
             Text(
               "Juma, 11 mart 2023",
               style: AppTextStyle.instance.w600.copyWith(

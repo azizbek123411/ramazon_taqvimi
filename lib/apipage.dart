@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/repository/providers/times_provider.dart';
-import 'package:ramazon_taqvimi/src/repository/service/api_service.dart';
 
 class NewPage extends StatefulHookConsumerWidget {
   const NewPage({super.key});
@@ -20,15 +19,15 @@ class _NewPageState extends ConsumerState<NewPage> {
       body: provider.when(
         data: (data) {
           return Center(
-            child: Text(data.times.hufton),
+            child: Text(
+              data!.peshin,
+              style: const TextStyle(fontSize: 20),
+            ),
           );
         },
         error: (error, st) {
-          log(error.toString());
-          return Center(
-            child: Text(
-              error.toString(),
-            ),
+          log(
+            error.toString(),
           );
         },
         loading: () {

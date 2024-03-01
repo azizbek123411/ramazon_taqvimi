@@ -5,7 +5,9 @@ import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 class DateScreen extends StatelessWidget {
-  const DateScreen({super.key});
+  String day;
+  String weekday;
+   DateScreen({super.key,required this.weekday,required this.day});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,11 @@ class DateScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("16",style: AppTextStyle.instance.w700.copyWith(
+              Text(day,style: AppTextStyle.instance.w700.copyWith(
                 fontSize: FontSizeConst.instance.smallFont,
                 color: AppColors.blackColor,
               ),),
-              Text("She",style: AppTextStyle.instance.w400.copyWith(
+              Text(weekday,style: AppTextStyle.instance.w400.copyWith(
                 fontSize: FontSizeConst.instance.tinyFont,
                 color: AppColors.blackColor,
               ),),
