@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
@@ -25,14 +26,14 @@ AppRouter.go(context, const Newspage());
             color: AppColors.colorF4DEBD,
             ),
         child: Text(
-          "O‘zbekistonliklar Ramazon hayitida 4 kun dam oladi — prezident qarori",
+          "news_title",
           style: AppTextStyle.instance.w700.copyWith(
 
             fontSize: FontSizeConst.instance.mediumFont,
             color: AppColors.blackColor,
           ),
           maxLines: 4,
-        ),
+        ).tr(),
       ),
     );
   }

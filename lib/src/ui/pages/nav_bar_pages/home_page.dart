@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -80,11 +81,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                 child: Column(
                   children: [
                     Text(
-                      "Ramazon Ro'zasi",
+                      "ramadan_month",
                       style: AppTextStyle.instance.w700.copyWith(
                           fontSize: FontSizeConst.instance.extraLargeFont,
                           color: AppColors.blackColor),
-                    ),
+                    ).tr(),
                     Padding(
                       padding: Dis.only(tb: 14.h),
                       child: CircularPercentIndicator(
@@ -93,11 +94,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Og’iz yopish uchun",
+                              "for_open_mouth",
                               style: AppTextStyle.instance.w400.copyWith(
                                   fontSize: FontSizeConst.instance.mediumFont,
                                   color: AppColors.blackColor),
-                            ),
+                            ).tr(),
                             Text(
                               "08:00:25",
                               style: AppTextStyle.instance.w700.copyWith(
@@ -126,13 +127,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 builder: (BuildContext context) {
                                   return BottomSheetHOme(
                                     h: 360.h,
-                                    whichPray: 'Og’iz ochish duosi',
+                                    whichPray: 'close_mouth_pray'.tr(),
                                     arabicPray:
                                         'نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرَ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ، خَالِصًا لِلهِ تَعَالَى أَللهُ أَكْبَرُ',
                                     latinPray:
-                                        'Navaytu an asuvma sovma shahri ramazona minal fajri ilal mag‘ribi, xolisan lillahi ta’aalaa Allohu akbar.',
+                                        'close_mouth_pray_latin'.tr(),
                                     meaningPray:
-                                        'Ma’nosi: Ramazon oyining ro‘zasini subhdan to kun botguncha tutmoqni niyat qildim. Xolis Alloh uchun Alloh buyukdir.',
+                                        'close_mouth_pray_meaning'.tr(),
                                   );
                                 },
                               );
@@ -158,7 +159,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   return const CircularProgressIndicator();
                                 }),
                                 Text(
-                                  "O'giz ochish duosi",
+                                  "close_mouth_pray".tr(),
                                   style: AppTextStyle.instance.w700.copyWith(
                                     fontSize: FontSizeConst.instance.smallFont,
                                     color: AppColors.whiteColor,
@@ -173,13 +174,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 builder: (BuildContext context) {
                                   return BottomSheetHOme(
                                     h: 470.h,
-                                    whichPray: 'Og’iz yopish duosi',
+                                    whichPray: 'open_mouth_pray'.tr(),
                                     arabicPray:
                                         'اَللَّهُمَّ لَكَ صُمْتُ وَ بِكَ آمَنْتُ وَ عَلَيْكَ تَوَكَّلْتُ وَ عَلَى رِزْقِكَ أَفْتَرْتُ، فَغْفِرْلِى مَا قَدَّمْتُ وَ مَا أَخَّرْتُ بِرَحْمَتِكَ يَا أَرْحَمَ الرَّاحِمِينَ',
                                     latinPray:
-                                        'Allohumma laka sumtu va bika aamantu va aʼlayka tavakkaltu va aʼlaa rizqika aftartu, fag‘firliy ma qoddamtu va maa axxortu birohmatika yaa arhamar roohimiyn.',
+                                        'open_mouth_pray_latin'.tr(),
                                     meaningPray:
-                                        'Maʼnosi: Ey Alloh, ushbu Ro‘zamni Sen uchun tutdim va Senga iymon keltirdim va Senga tavakkal qildim va bergan rizqing bilan iftor qildim. Ey mehribonlarning eng mehriboni, mening avvalgi va keyingi gunohlarimni mag‘firat qilgil.',
+                                        'open_mouth_pray_meaning'.tr(),
                                   );
                                 });
                           },

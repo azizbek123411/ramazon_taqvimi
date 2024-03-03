@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 
@@ -8,11 +9,20 @@ import '../../../config/font_size.dart';
 import '../../../config/router.dart';
 import '../../../repository/constants/text_styles.dart';
 import '../../../repository/utils/space.dart';
-class LanguageSettings extends StatelessWidget {
+class LanguageSettings extends HookConsumerWidget {
   const LanguageSettings({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,ref) {
+    // final selectRadioProvider = StateProvider((ref) {
+    //   if (context.locale == const Locale('uz', 'UZ')) {
+    //     return 0;
+    //   } else if (context.locale == const Locale('uz', 'UZCyrl')) {
+    //     return 1;
+    //   } else if (context.locale == const Locale('ru', 'RU')) {
+    //     return 2;
+    //   }
+    // });
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, 70.h),

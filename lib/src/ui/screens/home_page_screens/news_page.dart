@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
 import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
@@ -43,18 +44,20 @@ class _NewspageState extends State<Newspage> {
         child: Column(
           children: [
             Text(
-                "O‘zbekistonliklar Ramazon hayitida 4 kun dam oladi — prezident qarori",
-                style: AppTextStyle.instance.w700.copyWith(
-                  fontSize: FontSizeConst.instance.largeFont,
-                  color: AppColors.mainGreen,
-                )),
+              "news_title",
+              style: AppTextStyle.instance.w700.copyWith(
+                fontSize: FontSizeConst.instance.largeFont,
+                color: AppColors.mainGreen,
+              ),
+            ).tr(),
             HBox(20.h),
             Text(
-                "Ramazon hayitida o‘zbekistonliklar 4 kun — 21−24-aprel kunlari dam oladigan bo‘ldi. 24-aprel ko‘chirilgan dam olish kuni hisoblanmaydi, ya’ni 29-aprel 5 kun ishlaydiganlar uchun dam olish kuni bo‘ladi.",
-                style: AppTextStyle.instance.w700.copyWith(
-                  fontSize: FontSizeConst.instance.smallFont,
-                  color: AppColors.greyColor,
-                )),
+              "news_body",
+              style: AppTextStyle.instance.w700.copyWith(
+                fontSize: FontSizeConst.instance.smallFont,
+                color: AppColors.greyColor,
+              ),
+            ).tr(),
           ],
         ),
       ),

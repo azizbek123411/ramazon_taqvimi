@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
@@ -38,16 +39,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
           ),
         ),
         title: Text(
-          "Yangiliklar",
+          "news",
           style: AppTextStyle.instance.w700.copyWith(
               fontSize: FontSizeConst.instance.extraLargeFont,
               color: AppColors.mainGreen),
-        ),
+        ).tr(),
       ),
       backgroundColor: AppColors.mainBackground,
       body: Padding(
         padding: Dis.only(lr: 20.w,tb: 10.h),
-        child: SingleChildScrollView(
+        child:const SingleChildScrollView(
           child: Column(
             children: [
               NotificationCard(),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
@@ -38,25 +39,29 @@ class _ScrollPageState extends State<ScrollPage> {
               image: AssetImage("assets/images/ramadan.png"),
             ),
             Text(
-              "Muqaddas Ramazon oyi ",
+              "on_scroll_page_title",
               style: AppTextStyle.instance.w700.copyWith(
                   fontSize: FontSizeConst.instance.extraLargeFont,
                   color: AppColors.mainGreen),
-            ),
+            ).tr(),
             Text(
-              "“Ramazon oyi – odamlar uchun hidoyat (manbai) va to‘g‘ri yo‘l hamda ajrim etuvchi hujjatlardan iborat Qur'on nozil qilingan oydir ",
+              "on_scroll_page_body",
               style: AppTextStyle.instance.w500.copyWith(
                   fontSize: FontSizeConst.instance.mediumFont,
                   color: AppColors.mainGreen),
-            ),
+            ).tr(),
             MainGreenButton(
                 h: 48,
                 w: double.infinity,
                 radius: 8,
-                child: Center(child: Text("Boshlash",style: AppTextStyle.instance.w700.copyWith(
-                  fontSize: FontSizeConst.instance.mediumFont,
-                  color: AppColors.whiteColor
-                ),)),
+                child: Center(
+                  child: Text(
+                    "continue",
+                    style: AppTextStyle.instance.w700.copyWith(
+                        fontSize: FontSizeConst.instance.mediumFont,
+                        color: AppColors.whiteColor),
+                  ).tr(),
+                ),
                 onTap: () {
                   AppRouter.id(context, MainNavpage.id);
                 })

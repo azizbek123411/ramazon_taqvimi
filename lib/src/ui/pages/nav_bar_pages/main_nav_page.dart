@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
@@ -59,28 +60,28 @@ class _MainNavpageState extends State<MainNavpage> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: Colors.transparent,
-              label: "Bosh sahifa",
+              label: "navbar_home".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
                 child: SvgPicture.asset("assets/svg/lanterns 1.svg"),
               ),
             ),
             BottomNavigationBarItem(
-              label: "Namoz vaqtlari",
+              label: "namoz_time".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
                 child: SvgPicture.asset("assets/svg/ramadan-_1_ 1.svg"),
               ),
             ),
             BottomNavigationBarItem(
-              label: "Masjidlar",
+              label: "navbar_masjid".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
                 child: SvgPicture.asset("assets/svg/mosque-_1_ 1.svg"),
               ),
             ),
             BottomNavigationBarItem(
-              label: "Sozlamalar",
+              label: "settings".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
                 child: SvgPicture.asset("assets/svg/Frame.svg"),
