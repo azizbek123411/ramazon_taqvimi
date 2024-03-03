@@ -44,7 +44,7 @@ class HomeAppBar extends ConsumerWidget {
                );
              }else{
                return Text(
-                 "${data[0]!.date.day}.0${data[0]!.date.month}.${data[0]!.date.year}",
+                 "${data[2]!.date.day}}",
                  style: AppTextStyle.instance.w700.copyWith(
                    fontSize: FontSizeConst.instance.largeFont,
                    color: AppColors.whiteColor,

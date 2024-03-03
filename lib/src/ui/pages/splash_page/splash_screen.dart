@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
         width: double.infinity,
         decoration: BoxDecoration(
             image: const DecorationImage(
-                image: AssetImage("assets/images/image.png"),
+                image: AssetImage("assets/images/image2.png"),
                 fit: BoxFit.cover),
             color: AppColors.mainGreen),
         child: Center(

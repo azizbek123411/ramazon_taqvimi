@@ -4,7 +4,6 @@ import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
-import 'package:ramazon_taqvimi/src/repository/utils/space.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/main_green_button.dart';
 
 import '../../../config/appColors.dart';
@@ -29,7 +28,7 @@ class _ScrollPageState extends State<ScrollPage> {
         width: double.infinity,
         decoration: BoxDecoration(
             image: const DecorationImage(
-                image: AssetImage("assets/images/image.png"),
+                image: AssetImage("assets/images/image2.png"),
                 fit: BoxFit.cover),
             color: AppColors.mainBackground),
         child: Column(
