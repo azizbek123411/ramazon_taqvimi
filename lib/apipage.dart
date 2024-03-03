@@ -20,7 +20,7 @@ class _NewPageState extends ConsumerState<NewPage> {
         data: (data) {
           return Center(
             child: Text(
-              data!.peshin,
+              data[0]!.peshin,
               style: const TextStyle(fontSize: 20),
             ),
           );

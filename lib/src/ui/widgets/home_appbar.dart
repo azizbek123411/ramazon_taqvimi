@@ -34,13 +34,23 @@ class HomeAppBar extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             provider.when(data: (data){
-              return Text(
-                "${data!.date}",
-                style: AppTextStyle.instance.w600.copyWith(
-                  fontSize: FontSizeConst.instance.mediumFont,
-                  color: AppColors.whiteColor,
-                ),
-              );
+             if(data[0]!.date.month>=10){
+               return Text(
+                 "${data[0]!.date.day}.${data[0]!.date.month}.${data[0]!.date.year}",
+                 style: AppTextStyle.instance.w700.copyWith(
+                   fontSize: FontSizeConst.instance.largeFont,
+                   color: AppColors.whiteColor,
+                 ),
+               );
+             }else{
+               return Text(
+                 "${data[0]!.date.day}.0${data[0]!.date.month}.${data[0]!.date.year}",
+                 style: AppTextStyle.instance.w700.copyWith(
+                   fontSize: FontSizeConst.instance.largeFont,
+                   color: AppColors.whiteColor,
+                 ),
+               );
+             };
             },
                 error: (error,st){
               return Text(error.toString());
@@ -48,13 +58,6 @@ class HomeAppBar extends ConsumerWidget {
             }, loading: (){
               return const CircularProgressIndicator();
             }),
-            Text(
-              "Juma, 11 mart 2023",
-              style: AppTextStyle.instance.w600.copyWith(
-                fontSize: FontSizeConst.instance.extraSmallFont,
-                color: AppColors.whiteColor,
-              ),
-            ),
           ],
         ),
         actions: [

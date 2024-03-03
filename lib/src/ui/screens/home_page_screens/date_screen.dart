@@ -28,7 +28,7 @@ class DateScreen extends StatelessWidget {
                 fontSize: FontSizeConst.instance.smallFont,
                 color: AppColors.blackColor,
               ),),
-              Text(weekday,style: AppTextStyle.instance.w400.copyWith(
+              Text(weekday,style: AppTextStyle.instance.w700.copyWith(
                 fontSize: FontSizeConst.instance.tinyFont,
                 color: AppColors.blackColor,
               ),),

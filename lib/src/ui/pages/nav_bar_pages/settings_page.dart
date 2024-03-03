@@ -33,7 +33,7 @@ class _SettingsPageState extends State<SettingsPage> {
           )),
       backgroundColor: AppColors.mainBackground,
       body: Padding(
-        padding: Dis.only(lr: 20.w,tb: 10.h),
+        padding: Dis.only(lr: 20.w, tb: 10.h),
         child: Column(
           children: [
             SettingsListTile(
@@ -73,7 +73,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: AppColors.blackColor,
                 ),
                 onTap: () {
-                  AppRouter.go(context, const Connect());
+                  AppRouter.go(
+                    context,
+                    const Connect(),
+                  );
                 },
                 title: "Murojaat"),
           ],

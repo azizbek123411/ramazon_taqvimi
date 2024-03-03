@@ -11,6 +11,7 @@ import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/space.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/date_screen.dart';
+import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/this_day_screen.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/bottom_sheet.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/main_green_button.dart';
 
@@ -43,12 +44,24 @@ class _HomePageState extends ConsumerState<HomePage> {
               SizedBox(
                 height: 80.h,
                 child: provider.when(data: (data) {
-                  return ListView.builder(itemBuilder: (context, index) {
-                    return DateScreen(
-                      weekday: data!.weekday,
-                      day: data.date.day.toString(),
-                    );
-                  });
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        log(data.length.toString());
+                        return SizedBox(
+                          height: 90.h,
+                          child: DateTime.now().day != data[index]!.date.day
+                              ? DateScreen(
+                                  weekday: data[index]!.weekday,
+                                  day: data[index]!.date.day.toString(),
+                                )
+                              : ThisDayScreen(
+                                  weekday: data[index]!.weekday,
+                                  day: data[index]!.date.day.toString(),
+                                ),
+                        );
+                      });
                 }, error: (error, st) {
                   log(error.toString());
                 }, loading: () {
@@ -88,7 +101,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                             Text(
                               "08:00:25",
                               style: AppTextStyle.instance.w700.copyWith(
-                                  fontSize: FontSizeConst.instance.extraLargeFont,
+                                  fontSize:
+                                      FontSizeConst.instance.extraLargeFont,
                                   color: AppColors.blackColor),
                             ),
                           ],
@@ -108,10 +122,20 @@ class _HomePageState extends ConsumerState<HomePage> {
                         MainGreenButton(
                             onTap: () {
                               showModalBottomSheet(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return BottomSheetHOme(h: 360.h);
-                                  });
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return BottomSheetHOme(
+                                    h: 360.h,
+                                    whichPray: 'Og’iz ochish duosi',
+                                    arabicPray:
+                                        'نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرَ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ، خَالِصًا لِلهِ تَعَالَى أَللهُ أَكْبَرُ',
+                                    latinPray:
+                                        'Navaytu an asuvma sovma shahri ramazona minal fajri ilal mag‘ribi, xolisan lillahi ta’aalaa Allohu akbar.',
+                                    meaningPray:
+                                        'Ma’nosi: Ramazon oyining ro‘zasini subhdan to kun botguncha tutmoqni niyat qildim. Xolis Alloh uchun Alloh buyukdir.',
+                                  );
+                                },
+                              );
                             },
                             h: 61.h,
                             w: 149.w,
@@ -119,18 +143,27 @@ class _HomePageState extends ConsumerState<HomePage> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
+                                provider.when(data: (data) {
+                                  return Text(
+                                    data[1]!.saharlik,
+                                    style: AppTextStyle.instance.w700.copyWith(
+                                        fontSize:
+                                            FontSizeConst.instance.mediumFont,
+                                        color: AppColors.whiteColor),
+                                  );
+                                }, error: (e, st) {
+                                  return Text(e.toString());
+                                  // log(e.toString());
+                                }, loading: () {
+                                  return const CircularProgressIndicator();
+                                }),
                                 Text(
-                                  "04 : 00 AM",
+                                  "O'giz ochish duosi",
                                   style: AppTextStyle.instance.w700.copyWith(
-                                      fontSize: FontSizeConst.instance.mediumFont,
-                                      color: AppColors.whiteColor),
-                                ),
-                                Text(
-                                  "Og’iz yopish duosi",
-                                  style: AppTextStyle.instance.w700.copyWith(
-                                      fontSize: FontSizeConst.instance.smallFont,
-                                      color: AppColors.whiteColor),
-                                ),
+                                    fontSize: FontSizeConst.instance.smallFont,
+                                    color: AppColors.whiteColor,
+                                  ),
+                                )
                               ],
                             )),
                         MainGreenButton(
@@ -138,7 +171,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                             showModalBottomSheet(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return BottomSheetHOme(h: 360.h);
+                                  return BottomSheetHOme(
+                                    h: 470.h,
+                                    whichPray: 'Og’iz yopish duosi',
+                                    arabicPray:
+                                        'اَللَّهُمَّ لَكَ صُمْتُ وَ بِكَ آمَنْتُ وَ عَلَيْكَ تَوَكَّلْتُ وَ عَلَى رِزْقِكَ أَفْتَرْتُ، فَغْفِرْلِى مَا قَدَّمْتُ وَ مَا أَخَّرْتُ بِرَحْمَتِكَ يَا أَرْحَمَ الرَّاحِمِينَ',
+                                    latinPray:
+                                        'Allohumma laka sumtu va bika aamantu va aʼlayka tavakkaltu va aʼlaa rizqika aftartu, fag‘firliy ma qoddamtu va maa axxortu birohmatika yaa arhamar roohimiyn.',
+                                    meaningPray:
+                                        'Maʼnosi: Ey Alloh, ushbu Ro‘zamni Sen uchun tutdim va Senga iymon keltirdim va Senga tavakkal qildim va bergan rizqing bilan iftor qildim. Ey mehribonlarning eng mehriboni, mening avvalgi va keyingi gunohlarimni mag‘firat qilgil.',
+                                  );
                                 });
                           },
                           h: 61.h,
@@ -147,18 +189,27 @@ class _HomePageState extends ConsumerState<HomePage> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              provider.when(data: (data) {
+                                return Text(
+                                  data[1]!.xufton,
+                                  style: AppTextStyle.instance.w700.copyWith(
+                                      fontSize:
+                                          FontSizeConst.instance.mediumFont,
+                                      color: AppColors.whiteColor),
+                                );
+                              }, error: (e, st) {
+                                return Text(e.toString());
+                                // log(e.toString());
+                              }, loading: () {
+                                return const CircularProgressIndicator();
+                              }),
                               Text(
-                                "04 : 00 AM",
+                                "O'giz yopish duosi",
                                 style: AppTextStyle.instance.w700.copyWith(
-                                    fontSize: FontSizeConst.instance.mediumFont,
-                                    color: AppColors.whiteColor),
-                              ),
-                              Text(
-                                "Og’iz yopish duosi",
-                                style: AppTextStyle.instance.w700.copyWith(
-                                    fontSize: FontSizeConst.instance.smallFont,
-                                    color: AppColors.whiteColor),
-                              ),
+                                  fontSize: FontSizeConst.instance.smallFont,
+                                  color: AppColors.whiteColor,
+                                ),
+                              )
                             ],
                           ),
                         ),

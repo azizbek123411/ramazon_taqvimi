@@ -34,73 +34,80 @@ class _TimeSettingsState extends State<TimeSettings> {
       backgroundColor: AppColors.mainBackground,
       body: Padding(
         padding: Dis.only(lr: 20.w, tb: 10.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.green.shade100,
-                  child: IconButton(
-                    onPressed: () {
-                      AppRouter.close(context);
-                    },
-                    icon: Icon(
-                      Icons.arrow_back,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.green.shade100,
+                    child: IconButton(
+                      onPressed: () {
+                        AppRouter.close(context);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: AppColors.mainGreen,
+                      ),
+                    ),
+                  ),
+                  WBox(10.w),
+                  Text(
+                    "Vaqt sozlamasi",
+                    style: AppTextStyle.instance.w700.copyWith(
+                        fontSize: FontSizeConst.instance.extraLargeFont,
+                        color: AppColors.mainGreen),
+                  )
+                ],
+              ),
+              HBox(10.h),
+              Text(
+                "Joylashuvingiz",
+                style: AppTextStyle.instance.w700.copyWith(
+                  fontSize: FontSizeConst.instance.mediumFont,
+                  color: AppColors.mainGreen,
+                ),
+              ),
+              HBox(10.h),
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Uzbekistan, Toshkent",
+                  hintStyle: AppTextStyle.instance.w700.copyWith(
                       color: AppColors.mainGreen,
+                      fontSize: FontSizeConst.instance.mediumFont),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Colors.grey,
                     ),
                   ),
                 ),
-                WBox(10.w),
-                Text(
-                  "Vaqt sozlamasi",
-                  style: AppTextStyle.instance.w700.copyWith(
-                      fontSize: FontSizeConst.instance.extraLargeFont,
-                      color: AppColors.mainGreen),
-                )
-              ],
-            ),
-            HBox(10.h),
-            Text(
-              "Joylashuvingiz",
-              style: AppTextStyle.instance.w700.copyWith(
-                fontSize: FontSizeConst.instance.mediumFont,
-                color: AppColors.mainGreen,
               ),
-            ),
-            HBox(10.h),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Uzbekistan, Toshkent",
-                hintStyle: AppTextStyle.instance.w700.copyWith(
-                    color: AppColors.mainGreen,
-                    fontSize: FontSizeConst.instance.mediumFont),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
+              HBox(470.h),
+              MainGreenButton(
+                  h: 48.h,
+                  w: double.infinity,
+                  radius: 8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset("assets/svg/localization.svg"),
+                      Text(
+                        "Manzilni aniqlash",
+                        style: AppTextStyle.instance.w700.copyWith(
+                            color: AppColors.whiteColor,
+                            fontSize: FontSizeConst.instance.mediumFont),
+                      )
+                    ],
                   ),
-                ),
-              ),
-            ),
-            HBox(470.h),
-            MainGreenButton(h: 48.h, w: double.infinity, radius: 8,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset("assets/svg/localization.svg"),
-                    Text("Manzilni aniqlash",style: AppTextStyle.instance.w700.copyWith(
-                        color: AppColors.whiteColor,
-                        fontSize: FontSizeConst.instance.mediumFont
-                    ),)
-                  ],
-                ), onTap: (){}),
-
-          ],
+                  onTap: () {}),
+            ],
+          ),
         ),
       ),
     );

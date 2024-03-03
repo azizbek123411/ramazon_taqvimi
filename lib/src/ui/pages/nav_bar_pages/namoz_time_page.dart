@@ -17,7 +17,6 @@ class NamozTime extends StatefulHookConsumerWidget {
 }
 
 class _NamozTimeState extends ConsumerState<NamozTime> {
-
   @override
   Widget build(BuildContext context) {
     final provider = ref.watch(namozTimes);
@@ -37,34 +36,68 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
           children: [
             const SizedBox(
               height: 200,
+              child: Center(
+                child: Image(
+                  image: AssetImage("assets/images/img.png"),
+                ),
+              ),
             ),
             Container(
-            padding: Dis.only(lr: 20.w,tb: 10.h),
-            height: 491,
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(32),
-                  topLeft: Radius.circular(32),
-                ),
-                color: AppColors.mainBackground),
-            child:provider.when(data: (data){
-              return ListView.builder(itemBuilder: (context,index){
-                return ListView(
-                  children: [
-                    NamozListTile(hours: data!.saharlik, namozTiming: "Bomdod"),
-                    NamozListTile(hours: data.quyosh, namozTiming: "Peshin"),
-                    NamozListTile(hours: data.asr, namozTiming: "Asr"),
-                    NamozListTile(hours: data.shom, namozTiming: "Shom"),
-                    NamozListTile(hours: data.xufton, namozTiming: "Xufton"),
-                  ],
-                );
-              });
-            }, error: (error,st){
-              return Text(error.toString(),style: const TextStyle(fontSize: 20),);
-            }, loading: (){
-              return const CircularProgressIndicator();
-            })
-                          ),
+                padding: Dis.only(lr: 20.w, tb: 10.h),
+                height: 491,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(32),
+                      topLeft: Radius.circular(32),
+                    ),
+                    color: AppColors.mainBackground),
+                child: provider.when(data: (data) {
+                  return ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        for(final item in data){
+                          if(DateTime.now().day==item!.date.day){
+                            return SizedBox(
+                              height: 500,
+                              child:
+                              ListView(
+                                children: [
+                                  NamozListTile(
+                                    hours: data[index]!.saharlik,
+                                    namozTiming: "Bomdod",
+                                  ),
+                                  NamozListTile(
+                                    hours: data[index]!.peshin,
+                                    namozTiming: "Peshin",
+                                  ),
+                                  NamozListTile(
+                                    hours: data[index]!.asr,
+                                    namozTiming: "Asr",
+                                  ),
+                                  NamozListTile(
+                                    hours: data[index]!.shom,
+                                    namozTiming: "Shom",
+                                  ),
+                                  NamozListTile(
+                                    hours: data[index]!.xufton,
+                                    namozTiming: "Xufton",
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        }
+
+
+                      });
+                }, error: (error, st) {
+                  return Text(
+                    error.toString(),
+                    style: const TextStyle(fontSize: 20),
+                  );
+                }, loading: () {
+                  return const CircularProgressIndicator();
+                })),
           ],
         ),
       ),
