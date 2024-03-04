@@ -7,9 +7,16 @@ import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 
 class NamozListTile extends StatelessWidget {
+  Widget actionIcon;
   String namozTiming;
   String hours;
-   NamozListTile({super.key,required this.hours,required this.namozTiming});
+
+  NamozListTile({
+    super.key,
+    required this.hours,
+    required this.namozTiming,
+    required this.actionIcon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +37,14 @@ class NamozListTile extends StatelessWidget {
             fontSize: FontSizeConst.instance.smallFont,
           ),
         ),
-        subtitle:  Text(
-         hours  ,
+        subtitle: Text(
+          hours,
           style: AppTextStyle.instance.w700.copyWith(
             color: AppColors.blackColor,
             fontSize: FontSizeConst.instance.mediumFont,
           ),
         ),
-        trailing: IconButton(
-          onPressed: () {},
-          icon: SvgPicture.asset("assets/svg/Frame (1).svg"),
-        ),
+        trailing: actionIcon,
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/config/appColors.dart';
+import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
+import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 class  MainGreenButton extends StatelessWidget {
   double h;
   double w;
@@ -18,6 +20,7 @@ class  MainGreenButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        padding: Dis.only(lr: 4.w),
         height: h,
         width: w,
         decoration: BoxDecoration(

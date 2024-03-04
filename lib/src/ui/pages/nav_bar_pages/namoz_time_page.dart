@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
 import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
@@ -18,6 +19,7 @@ class NamozTime extends StatefulHookConsumerWidget {
 }
 
 class _NamozTimeState extends ConsumerState<NamozTime> {
+  final volumeProvider=StateProvider((ref) => false);
   @override
   Widget build(BuildContext context) {
     final provider = ref.watch(namozTimes);
@@ -56,40 +58,54 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
-                        for(final item in data){
-                          if(DateTime.now().day==item!.date.day){
+                        for (final item in data) {
+                          if (DateTime.now().day == item!.date.day) {
                             return SizedBox(
                               height: 500,
-                              child:
-                              ListView(
+                              child: ListView(
                                 children: [
                                   NamozListTile(
-                                    hours: data[index]!.saharlik,
-                                    namozTiming: "bomdod".tr(),
-                                  ),
+                                      hours: data[index]!.saharlik,
+                                      namozTiming: "bomdod".tr(),
+                                      actionIcon: IconButton(
+                                        onPressed: () {},
+                                        icon: SvgPicture.asset(""),
+                                      )),
                                   NamozListTile(
                                     hours: data[index]!.peshin,
                                     namozTiming: "peshin".tr(),
+                                    actionIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: SvgPicture.asset(""),
+                                    ),
                                   ),
                                   NamozListTile(
                                     hours: data[index]!.asr,
                                     namozTiming: "asr".tr(),
+                                    actionIcon: IconButton(
+                                      onPressed: () {},
+                                      icon: SvgPicture.asset(""),
+                                    ),
                                   ),
                                   NamozListTile(
-                                    hours: data[index]!.shom,
-                                    namozTiming: "shom".tr(),
-                                  ),
+                                      hours: data[index]!.shom,
+                                      namozTiming: "shom".tr(),
+                                      actionIcon: IconButton(
+                                        onPressed: () {},
+                                        icon: SvgPicture.asset(""),
+                                      )),
                                   NamozListTile(
-                                    hours: data[index]!.xufton,
-                                    namozTiming: "xufton".tr(),
-                                  ),
+                                      hours: data[index]!.xufton,
+                                      namozTiming: "xufton".tr(),
+                                      actionIcon: IconButton(
+                                        onPressed: () {},
+                                        icon: SvgPicture.asset(""),
+                                      )),
                                 ],
                               ),
                             );
                           }
                         }
-
-
                       });
                 }, error: (error, st) {
                   return Text(

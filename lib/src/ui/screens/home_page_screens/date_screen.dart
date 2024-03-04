@@ -15,7 +15,7 @@ class DateScreen extends StatelessWidget {
       padding:  Dis.only(tb: 5.h,lr: 13.w),
       child: Container(
         height: 72.h,
-        width: 56.w,
+        width: 65.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: AppColors.colorF4DEBD,

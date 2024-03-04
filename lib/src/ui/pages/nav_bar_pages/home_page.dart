@@ -12,7 +12,6 @@ import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/space.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/date_screen.dart';
-import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/this_day_screen.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/bottom_sheet.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/main_green_button.dart';
 
@@ -57,10 +56,32 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   weekday: data[index]!.weekday,
                                   day: data[index]!.date.day.toString(),
                                 )
-                              : ThisDayScreen(
-                                  weekday: data[index]!.weekday,
-                                  day: data[index]!.date.day.toString(),
-                                ),
+                              : MainGreenButton(
+                                  h: 72.h,
+                                  w: 106.w,
+                                  radius: 8,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        data[index]!.date.day.toString(),
+                                        style: AppTextStyle.instance.w700
+                                            .copyWith(
+                                                fontSize: FontSizeConst
+                                                    .instance.largeFont,
+                                                color: AppColors.whiteColor),
+                                      ),
+                                      Text(
+                                        data[index]!.weekday,
+                                        style: AppTextStyle.instance.w700
+                                            .copyWith(
+                                                fontSize: FontSizeConst
+                                                    .instance.extraSmallFont,
+                                                color: AppColors.whiteColor),
+                                      ),
+                                    ],
+                                  ),
+                                  onTap: () {}),
                         );
                       });
                 }, error: (error, st) {
@@ -121,58 +142,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         MainGreenButton(
-                            onTap: () {
-                              showModalBottomSheet(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return BottomSheetHOme(
-                                    h: 360.h,
-                                    whichPray: 'close_mouth_pray'.tr(),
-                                    arabicPray:
-                                        'نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرَ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ، خَالِصًا لِلهِ تَعَالَى أَللهُ أَكْبَرُ',
-                                    latinPray: 'close_mouth_pray_latin'.tr(),
-                                    meaningPray:
-                                        'close_mouth_pray_meaning'.tr(),
-                                  );
-                                },
-                              );
-                            },
-                            h: 61.h,
-                            w: 149.w,
-                            radius: 8,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                provider.when(data: (data) {
-                                  return Text(
-                                    data[1]!.saharlik,
-                                    style: AppTextStyle.instance.w700.copyWith(
-                                        fontSize:
-                                            FontSizeConst.instance.mediumFont,
-                                        color: AppColors.whiteColor),
-                                  );
-                                }, error: (e, st) {
-                                  return Text(e.toString());
-                                  // log(e.toString());
-                                }, loading: () {
-                                  return const CircularProgressIndicator();
-                                }),
-                                Text(
-                                  "close_mouth_pray".tr(),
-                                  style: AppTextStyle.instance.w700.copyWith(
-                                    fontSize: FontSizeConst.instance.smallFont,
-                                    color: AppColors.whiteColor,
-                                  ),
-                                )
-                              ],
-                            )),
-                        MainGreenButton(
                           onTap: () {
                             showModalBottomSheet(
                                 context: context,
                                 builder: (BuildContext context) {
                                   return BottomSheetHOme(
-                                    h: 470.h,
+                                    h: 450.h,
                                     whichPray: 'open_mouth_pray'.tr(),
                                     arabicPray:
                                         'اَللَّهُمَّ لَكَ صُمْتُ وَ بِكَ آمَنْتُ وَ عَلَيْكَ تَوَكَّلْتُ وَ عَلَى رِزْقِكَ أَفْتَرْتُ، فَغْفِرْلِى مَا قَدَّمْتُ وَ مَا أَخَّرْتُ بِرَحْمَتِكَ يَا أَرْحَمَ الرَّاحِمِينَ',
@@ -181,8 +156,55 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   );
                                 });
                           },
-                          h: 61.h,
-                          w: 149.w,
+                          h: 70.h,
+                          w: 150.w,
+                          radius: 8,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              provider.when(data: (data) {
+                                return Text(
+                                  data[1]!.saharlik,
+                                  style: AppTextStyle.instance.w700.copyWith(
+                                      fontSize:
+                                          FontSizeConst.instance.mediumFont,
+                                      color: AppColors.whiteColor),
+                                );
+                              }, error: (e, st) {
+                                return Text(e.toString());
+                                // log(e.toString());
+                              }, loading: () {
+                                return const CircularProgressIndicator();
+                              }),
+                              Text(
+                                "open_mouth_pray",
+                                style: AppTextStyle.instance.w700.copyWith(
+                                  fontSize: FontSizeConst.instance.smallFont,
+                                  color: AppColors.whiteColor,
+                                ),
+                              ).tr()
+                            ],
+                          ),
+                        ),
+                        MainGreenButton(
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return BottomSheetHOme(
+                                  h: 400.h,
+                                  whichPray: 'close_mouth_pray'.tr(),
+                                  arabicPray:
+                                      'نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرَ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ، خَالِصًا لِلهِ تَعَالَى أَللهُ أَكْبَرُ',
+                                  latinPray: 'close_mouth_pray_latin'.tr(),
+                                  meaningPray: 'close_mouth_pray_meaning'.tr(),
+                                );
+                              },
+                            );
+                          },
+                          h: 70.h,
+                          w: 150.w,
                           radius: 8,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -202,12 +224,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 return const CircularProgressIndicator();
                               }),
                               Text(
-                                "open_mouth_pray",
+                                "close_mouth_pray".tr(),
                                 style: AppTextStyle.instance.w700.copyWith(
                                   fontSize: FontSizeConst.instance.smallFont,
                                   color: AppColors.whiteColor,
                                 ),
-                              ).tr()
+                              )
                             ],
                           ),
                         ),
