@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
@@ -24,11 +25,11 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text(
-          'Namoz vaqti',
+          'namoz_time',
           style: AppTextStyle.instance.w700.copyWith(
               color: AppColors.whiteColor,
               fontSize: FontSizeConst.instance.extraLargeFont),
-        ),
+        ).tr(),
       ),
       backgroundColor: AppColors.mainGreen,
       body: SingleChildScrollView(
@@ -64,23 +65,23 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                                 children: [
                                   NamozListTile(
                                     hours: data[index]!.saharlik,
-                                    namozTiming: "Bomdod",
+                                    namozTiming: "bomdod".tr(),
                                   ),
                                   NamozListTile(
                                     hours: data[index]!.peshin,
-                                    namozTiming: "Peshin",
+                                    namozTiming: "peshin".tr(),
                                   ),
                                   NamozListTile(
                                     hours: data[index]!.asr,
-                                    namozTiming: "Asr",
+                                    namozTiming: "asr".tr(),
                                   ),
                                   NamozListTile(
                                     hours: data[index]!.shom,
-                                    namozTiming: "Shom",
+                                    namozTiming: "shom".tr(),
                                   ),
                                   NamozListTile(
                                     hours: data[index]!.xufton,
-                                    namozTiming: "Xufton",
+                                    namozTiming: "xufton".tr(),
                                   ),
                                 ],
                               ),

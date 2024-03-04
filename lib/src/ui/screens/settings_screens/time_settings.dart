@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ramazon_taqvimi/src/config/appColors.dart';
@@ -54,21 +55,21 @@ class _TimeSettingsState extends State<TimeSettings> {
                   ),
                   WBox(10.w),
                   Text(
-                    "Vaqt sozlamasi",
+                    "time_settings",
                     style: AppTextStyle.instance.w700.copyWith(
                         fontSize: FontSizeConst.instance.extraLargeFont,
                         color: AppColors.mainGreen),
-                  )
+                  ).tr()
                 ],
               ),
               HBox(10.h),
               Text(
-                "Joylashuvingiz",
+                "your_location",
                 style: AppTextStyle.instance.w700.copyWith(
                   fontSize: FontSizeConst.instance.mediumFont,
                   color: AppColors.mainGreen,
                 ),
-              ),
+              ).tr(),
               HBox(10.h),
               TextField(
                 decoration: InputDecoration(
@@ -98,11 +99,11 @@ class _TimeSettingsState extends State<TimeSettings> {
                     children: [
                       SvgPicture.asset("assets/svg/localization.svg"),
                       Text(
-                        "Manzilni aniqlash",
+                        "detect_location",
                         style: AppTextStyle.instance.w700.copyWith(
                             color: AppColors.whiteColor,
                             fontSize: FontSizeConst.instance.mediumFont),
-                      )
+                      ).tr(),
                     ],
                   ),
                   onTap: () {}),

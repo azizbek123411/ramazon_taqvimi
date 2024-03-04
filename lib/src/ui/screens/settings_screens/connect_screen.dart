@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
@@ -49,24 +50,24 @@ class Connect extends StatelessWidget {
                 ),
                 WBox(10.w),
                 Text(
-                  "Vaqt sozlamasi",
+                  "support",
                   style: AppTextStyle.instance.w700.copyWith(
                       fontSize: FontSizeConst.instance.extraLargeFont,
                       color: AppColors.mainGreen),
-                )
+                ).tr()
               ],
             ),
             HBox(10.h),
             ConnectListTile(
-                title: "Telegram orqali",
+                title: "via_telegram".tr(),
                 action: SvgPicture.asset("assets/svg/telegram.svg"),
                 onTap: () {}),
             ConnectListTile(
-                title: "Email orqali",
+                title: "via_email".tr(),
                 action: SvgPicture.asset("assets/svg/email.svg"),
                 onTap: () {}),
             ConnectListTile(
-                title: "Telefon orqali",
+                title: "via_phone".tr(),
                 action: SvgPicture.asset("assets/svg/tel.svg"),
                 onTap: () {}),
           ],

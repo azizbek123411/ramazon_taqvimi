@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
-import 'package:ramazon_taqvimi/src/ui/widgets/namoz_list_tlie.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/settings_list_tile.dart';
 
 import '../../../config/appColors.dart';
@@ -47,18 +47,18 @@ class AzonSettings extends StatelessWidget {
               ),
               WBox(10.w),
               Text(
-                "Azon sozlamalari",
+                "azon_settings",
                 style: AppTextStyle.instance.w700.copyWith(
                     fontSize: FontSizeConst.instance.extraLargeFont,
                     color: AppColors.mainGreen),
-              ),
+              ).tr(),
             ],
           ),
-        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "Bomdod"),
-        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "Peshin"),
-        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "Asr"),
-        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "Shom"),
-        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "Xufton"),
+        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "bomdod".tr()),
+        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "peshin".tr()),
+        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "asr".tr()),
+        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "shom".tr()),
+        SettingsListTile(trailing: SvgPicture.asset("assets/svg/Frame (1).svg"), onTap: (){}, title: "xufton".tr()),
         ],
       ),),
     );

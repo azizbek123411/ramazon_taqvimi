@@ -45,6 +45,8 @@ dependencies:
   flutter_hooks: ^0.20.5
   hooks_riverpod: ^2.4.10
   easy_localization: ^3.0.5
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 
 dev_dependencies:
@@ -73,6 +75,7 @@ flutter:
   assets:
    - assets/images/
    - assets/svg/
+   - assets/localization/
 
   #   - images/a_dot_ham.jpeg
 

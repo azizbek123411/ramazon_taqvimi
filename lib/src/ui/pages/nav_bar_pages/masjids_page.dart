@@ -1,5 +1,5 @@
-import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -35,12 +35,12 @@ class _MasjidsPageState extends State<MasjidsPage> {
           child: AppBar(
             backgroundColor: Colors.transparent,
             title: Text(
-              "Eng yaqin Masjidlar",
+              "near_masjids",
               style: AppTextStyle.instance.w700.copyWith(
                 fontSize: FontSizeConst.instance.extraLargeFont,
                 color: AppColors.whiteColor,
               ),
-            ),
+            ).tr(),
           ),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -9,20 +10,21 @@ import '../../../config/font_size.dart';
 import '../../../config/router.dart';
 import '../../../repository/constants/text_styles.dart';
 import '../../../repository/utils/space.dart';
+
 class LanguageSettings extends HookConsumerWidget {
   const LanguageSettings({super.key});
 
   @override
-  Widget build(BuildContext context,ref) {
-    // final selectRadioProvider = StateProvider((ref) {
-    //   if (context.locale == const Locale('uz', 'UZ')) {
-    //     return 0;
-    //   } else if (context.locale == const Locale('uz', 'UZCyrl')) {
-    //     return 1;
-    //   } else if (context.locale == const Locale('ru', 'RU')) {
-    //     return 2;
-    //   }
-    // });
+  Widget build(BuildContext context, ref) {
+    final selectRadioProvider = StateProvider((ref) {
+      if (context.locale == const Locale('uz', 'UZ')) {
+        return 0;
+      } else if (context.locale == const Locale('ru', 'RU')) {
+        return 1;
+      } else if (context.locale == const Locale('en', 'EN')) {
+        return 2;
+      }
+    });
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, 70.h),
@@ -37,8 +39,7 @@ class LanguageSettings extends HookConsumerWidget {
           )),
       backgroundColor: AppColors.mainBackground,
       body: Padding(
-        padding: Dis.only(lr: 20.w,
-        tb: 10.h),
+        padding: Dis.only(lr: 20.w, tb: 10.h),
         child: Column(
           children: [
             Row(
@@ -57,18 +58,24 @@ class LanguageSettings extends HookConsumerWidget {
                 ),
                 WBox(10.w),
                 Text(
-                  "Vaqt sozlamasi",
+                  "language",
                   style: AppTextStyle.instance.w700.copyWith(
                       fontSize: FontSizeConst.instance.extraLargeFont,
                       color: AppColors.mainGreen),
-                )
+                ).tr()
               ],
             ),
             ListTile(
-              leading: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.radio_button_checked_sharp,
-                    color: AppColors.blackColor),
+              leading: Radio(
+
+                activeColor: AppColors.mainGreen,
+                value: 0,
+                groupValue: ref.watch(selectRadioProvider),
+                onChanged: (value) async {
+                  await context.setLocale(
+                    const Locale("uz", "UZ"),
+                  );
+                },
               ),
               title: Text(
                 "O'zbekcha (UZ)",
@@ -84,12 +91,15 @@ class LanguageSettings extends HookConsumerWidget {
               ),
             ),
             ListTile(
-              leading: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.radio_button_checked_sharp,
-                  color: AppColors.blackColor,
-                ),
+              leading: Radio(
+                activeColor: AppColors.mainGreen,
+                value: 1,
+                groupValue: ref.watch(selectRadioProvider),
+                onChanged: (value) async {
+                  await context.setLocale(
+                    const Locale("ru", "RU"),
+                  );
+                },
               ),
               title: Text(
                 "Русский   (RU)",
@@ -104,10 +114,13 @@ class LanguageSettings extends HookConsumerWidget {
                   width: 32.w),
             ),
             ListTile(
-              leading: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.radio_button_checked_sharp,
-                    color: AppColors.blackColor),
+              leading: Radio(
+                activeColor: AppColors.mainGreen,
+                value: 2,
+                groupValue: ref.watch(selectRadioProvider),
+                onChanged: (value)async {
+                await  context.setLocale(const Locale("en", "EN"));
+                },
               ),
               title: Text(
                 "English (US)",

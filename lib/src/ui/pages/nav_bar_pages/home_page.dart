@@ -130,8 +130,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     whichPray: 'close_mouth_pray'.tr(),
                                     arabicPray:
                                         'نَوَيْتُ أَنْ أَصُومَ صَوْمَ شَهْرَ رَمَضَانَ مِنَ الْفَجْرِ إِلَى الْمَغْرِبِ، خَالِصًا لِلهِ تَعَالَى أَللهُ أَكْبَرُ',
-                                    latinPray:
-                                        'close_mouth_pray_latin'.tr(),
+                                    latinPray: 'close_mouth_pray_latin'.tr(),
                                     meaningPray:
                                         'close_mouth_pray_meaning'.tr(),
                                   );
@@ -177,10 +176,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     whichPray: 'open_mouth_pray'.tr(),
                                     arabicPray:
                                         'اَللَّهُمَّ لَكَ صُمْتُ وَ بِكَ آمَنْتُ وَ عَلَيْكَ تَوَكَّلْتُ وَ عَلَى رِزْقِكَ أَفْتَرْتُ، فَغْفِرْلِى مَا قَدَّمْتُ وَ مَا أَخَّرْتُ بِرَحْمَتِكَ يَا أَرْحَمَ الرَّاحِمِينَ',
-                                    latinPray:
-                                        'open_mouth_pray_latin'.tr(),
-                                    meaningPray:
-                                        'open_mouth_pray_meaning'.tr(),
+                                    latinPray: 'open_mouth_pray_latin'.tr(),
+                                    meaningPray: 'open_mouth_pray_meaning'.tr(),
                                   );
                                 });
                           },
@@ -205,12 +202,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 return const CircularProgressIndicator();
                               }),
                               Text(
-                                "O'giz yopish duosi",
+                                "open_mouth_pray",
                                 style: AppTextStyle.instance.w700.copyWith(
                                   fontSize: FontSizeConst.instance.smallFont,
                                   color: AppColors.whiteColor,
                                 ),
-                              )
+                              ).tr()
                             ],
                           ),
                         ),

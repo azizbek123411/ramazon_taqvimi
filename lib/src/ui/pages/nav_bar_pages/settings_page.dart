@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ramazon_taqvimi/src/config/appColors.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
@@ -37,48 +38,52 @@ class _SettingsPageState extends State<SettingsPage> {
         child: Column(
           children: [
             SettingsListTile(
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: AppColors.blackColor,
-                ),
-                onTap: () {
-                  AppRouter.go(context, const TimeSettings());
-                },
-                title: "Vaqt sozlamalari"),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: AppColors.blackColor,
+              ),
+              onTap: () {
+                AppRouter.go(context, const TimeSettings());
+              },
+              title: "time_settings".tr(),
+            ),
             SettingsListTile(
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: AppColors.blackColor,
-                ),
-                onTap: () {
-                  AppRouter.go(context, const AzonSettings());
-                },
-                title: "Azon sozlamari"),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: AppColors.blackColor,
+              ),
+              onTap: () {
+                AppRouter.go(context, const AzonSettings());
+              },
+              title: "azon_settings".tr(),
+            ),
             SettingsListTile(
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: AppColors.blackColor,
-                ),
-                onTap: () {
-                  AppRouter.go(context, const LanguageSettings());
-                },
-                title: "Ilova tili"),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: AppColors.blackColor,
+              ),
+              onTap: () {
+                AppRouter.go(context, const LanguageSettings());
+              },
+              title: "language".tr(),
+            ),
             SettingsListTile(
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 20,
-                  color: AppColors.blackColor,
-                ),
-                onTap: () {
-                  AppRouter.go(
-                    context,
-                    const Connect(),
-                  );
-                },
-                title: "Murojaat"),
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                size: 20,
+                color: AppColors.blackColor,
+              ),
+              onTap: () {
+                AppRouter.go(
+                  context,
+                  const Connect(),
+                );
+              },
+              title: "support".tr(),
+            ),
           ],
         ),
       ),
