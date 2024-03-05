@@ -46,7 +46,6 @@ class _MainNavpageState extends State<MainNavpage> {
           ),
         ),
         child: BottomNavigationBar(
-          // showSelectedLabels: false,
           selectedLabelStyle: AppTextStyle.instance.w500.copyWith(
               fontSize: FontSizeConst.instance.smallFont,
               color: AppColors.whiteColor),
@@ -67,20 +66,21 @@ class _MainNavpageState extends State<MainNavpage> {
               ),
             ),
             BottomNavigationBarItem(
+                backgroundColor: Colors.transparent,
               label: "namoz_time".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
                 child: SvgPicture.asset("assets/svg/ramadan-_1_ 1.svg"),
               ),
             ),
-            BottomNavigationBarItem(
+            BottomNavigationBarItem(backgroundColor: Colors.transparent,
               label: "navbar_masjid".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
                 child: SvgPicture.asset("assets/svg/mosque-_1_ 1.svg"),
               ),
             ),
-            BottomNavigationBarItem(
+            BottomNavigationBarItem(backgroundColor: Colors.transparent,
               label: "settings".tr(),
               icon: Padding(
                 padding: Dis.only(tb: 8.h),
