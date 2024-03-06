@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -225,58 +224,10 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             );
           }, loading: () {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           }),
         ),
       ),
     );
   }
 }
-//Column(
-//             children: [
-//               Container(
-//         child: Column(
-//                   children: [
-//
-//                   ],
-//                 ),
-//               )
-//             ],
-//           )
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//

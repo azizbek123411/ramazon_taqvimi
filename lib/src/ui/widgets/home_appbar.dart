@@ -18,6 +18,7 @@ class HomeAppBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context,ref) {
     final provider = ref.watch(namozTimes);
+    final dayIndex=DateTime.now().day-1;
     return  Container(
       padding: Dis.only(lr: 8.w, top: 40.h),
       decoration: BoxDecoration(
@@ -29,49 +30,61 @@ class HomeAppBar extends ConsumerWidget {
       ),
       child: AppBar(
         backgroundColor: Colors.transparent,
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            provider.when(data: (data){
-             if(data[0]!.date.month>=10){
-               return Text(
-                 "${data[0]!.date.day}.${data[0]!.date.month}.${data[0]!.date.year}",
+        title: provider.when(data: (data){
+         if(data[dayIndex]!.date.month>=10||data[dayIndex]!.date.day>=10){
+           return Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+               Text(
+                 "${data[dayIndex]!.date.day}.${data[dayIndex]!.date.month}.${data[dayIndex]!.date.year}",
                  style: AppTextStyle.instance.w700.copyWith(
                    fontSize: FontSizeConst.instance.largeFont,
                    color: AppColors.whiteColor,
                  ),
-               );
-             }else{
-               return Text(
-                 "${data[2]!.date.day}}",
+               ),
+               Text("${data[dayIndex]!.hijriyKun} ${data[dayIndex]!.hijriyOy}",style: AppTextStyle.instance.w600.copyWith(
+                 fontSize: FontSizeConst.instance.smallFont,
+                 color: AppColors.whiteColor,
+               ),),
+             ],
+           );
+         }else{
+           return Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+               Text(
+                 "0${data[dayIndex]!.date.day}.0${data[dayIndex]!.date.month} ${data[dayIndex]!.date.year}",
                  style: AppTextStyle.instance.w700.copyWith(
                    fontSize: FontSizeConst.instance.largeFont,
                    color: AppColors.whiteColor,
                  ),
-               );
-             };
-            },
-                error: (error,st){
-              return Text(error.toString());
-              // log(error.toString());
-            }, loading: (){
-              return const CircularProgressIndicator();
-            }),
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              AppRouter.go(context, const NotificationScreen());
-            },
-            icon: SvgPicture.asset(
-              'assets/svg/BellOutline.svg',
-              height: 24.h,
-              width: 24.w,
-            ),
-          )
-        ],
+               ),
+               Text("${data[dayIndex]!.hijriyKun} ${data[dayIndex]!.hijriyOy}",style: AppTextStyle.instance.w600.copyWith(
+                 fontSize: FontSizeConst.instance.smallFont,
+                 color: AppColors.whiteColor,
+               ),),
+             ],
+           );
+         };
+        },
+            error: (error,st){
+          return Text(error.toString());
+          // log(error.toString());
+        }, loading: (){
+          return const CircularProgressIndicator();
+        }),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       AppRouter.go(context, const NotificationScreen());
+        //     },
+        //     icon: SvgPicture.asset(
+        //       'assets/svg/BellOutline.svg',
+        //       height: 24.h,
+        //       width: 24.w,
+        //     ),
+        //   )
+        // ],
       ),
     );
   }

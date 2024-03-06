@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/connect_list_tile.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../config/appColors.dart';
 import '../../../config/font_size.dart';
@@ -16,6 +18,13 @@ class Connect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> _launchURL(String url) async {
+      final Uri uri = Uri(scheme: "https", host: url);
+      if (await launchUrl(uri, mode: LaunchMode.inAppWebView)) {
+        throw "Don't launch";
+      }
+    }
+
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, 70.h),
@@ -32,7 +41,6 @@ class Connect extends StatelessWidget {
       body: Padding(
         padding: Dis.only(lr: 20.w, tb: 10.h),
         child: Column(
-
           children: [
             Row(
               children: [
@@ -59,17 +67,35 @@ class Connect extends StatelessWidget {
             ),
             HBox(10.h),
             ConnectListTile(
-                title: "via_telegram".tr(),
-                action: SvgPicture.asset("assets/svg/telegram.svg"),
-                onTap: () {}),
+              title: "via_telegram".tr(),
+              action: SvgPicture.asset("assets/svg/telegram.svg"),
+              onTap: () {
+                launchUrlString("https://t.me/Azizbek_Sultonov",
+                    mode: LaunchMode.inAppBrowserView);
+              },
+            ),
             ConnectListTile(
-                title: "via_email".tr(),
-                action: SvgPicture.asset("assets/svg/email.svg"),
-                onTap: () {}),
+              title: "via_email".tr(),
+              action: SvgPicture.asset("assets/svg/email.svg"),
+              onTap: ()async {
+                await launchUrl(
+                   Uri.parse('mailto:sultonovazizbek73@gmail.com?subject=Subject&body=Body'),
+                   // mode: LaunchMode.inAppBrowserView,
+                 );
+
+
+              },
+            ),
             ConnectListTile(
-                title: "via_phone".tr(),
-                action: SvgPicture.asset("assets/svg/tel.svg"),
-                onTap: () {}),
+              title: "via_phone".tr(),
+              action: SvgPicture.asset("assets/svg/tel.svg"),
+              onTap: () async {
+
+                  await launchUrlString("tel:",
+                      mode: LaunchMode.externalApplication);
+
+              },
+            ),
           ],
         ),
       ),

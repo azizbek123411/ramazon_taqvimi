@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,6 +35,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
     final volumeOnOf3 = ref.watch(volumeProvider3);
     final volumeOnOf4 = ref.watch(volumeProvider4);
     final volumeOnOf5 = ref.watch(volumeProvider5);
+    final thisDay=DateTime.now().day-1;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -68,96 +71,93 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
-                        for (final item in data) {
-                          if (DateTime.now().day == item!.date.day) {
-                            return SizedBox(
-                              height: 500,
-                              child: ListView(
-                                children: [
-                                  NamozListTile(
-                                    hours: data[index]!.saharlik,
-                                    namozTiming: "bomdod".tr(),
-                                    actionIcon: IconButton(
-                                      onPressed: () {
-                                        ref
-                                            .read(volumeProvider1.notifier)
-                                            .state = !volumeOnOf1;
-                                      },
-                                      icon: volumeOnOf1
-                                          ? SvgPicture.asset(
-                                              "assets/svg/volume_on.svg")
-                                          : SvgPicture.asset(
-                                              "assets/svg/volume_off.svg"),
-                                    ),
-                                  ),
-                                  NamozListTile(
-                                    hours: data[index]!.peshin,
-                                    namozTiming: "peshin".tr(),
-                                    actionIcon: IconButton(
-                                      onPressed: () {
-                                        ref
-                                            .read(volumeProvider2.notifier)
-                                            .state = !volumeOnOf2;
-                                      },
-                                      icon: volumeOnOf2
-                                          ? SvgPicture.asset(
-                                              "assets/svg/volume_on.svg")
-                                          : SvgPicture.asset(
-                                              "assets/svg/volume_off.svg"),
-                                    ),
-                                  ),
-                                  NamozListTile(
-                                    hours: data[index]!.asr,
-                                    namozTiming: "asr".tr(),
-                                    actionIcon: IconButton(
-                                      onPressed: () {
-                                        ref
-                                            .read(volumeProvider3.notifier)
-                                            .state = !volumeOnOf3;
-                                      },
-                                      icon: volumeOnOf3
-                                          ? SvgPicture.asset(
-                                              "assets/svg/volume_on.svg")
-                                          : SvgPicture.asset(
-                                              "assets/svg/volume_off.svg"),
-                                    ),
-                                  ),
-                                  NamozListTile(
-                                    hours: data[index]!.shom,
-                                    namozTiming: "shom".tr(),
-                                    actionIcon: IconButton(
-                                      onPressed: () {
-                                        ref
-                                            .read(volumeProvider5.notifier)
-                                            .state = !volumeOnOf5;
-                                      },
-                                      icon: volumeOnOf5
-                                          ? SvgPicture.asset(
-                                              "assets/svg/volume_on.svg")
-                                          : SvgPicture.asset(
-                                              "assets/svg/volume_off.svg"),
-                                    ),
-                                  ),
-                                  NamozListTile(
-                                      hours: data[index]!.xufton,
-                                      namozTiming: "xufton".tr(),
-                                      actionIcon: IconButton(
-                                        onPressed: () {
-                                          ref
-                                              .read(volumeProvider4.notifier)
-                                              .state = !volumeOnOf4;
-                                        },
-                                        icon: volumeOnOf4
-                                            ? SvgPicture.asset(
-                                                "assets/svg/volume_on.svg")
-                                            : SvgPicture.asset(
-                                                "assets/svg/volume_off.svg"),
-                                      )),
-                                ],
+                      return SizedBox(
+                        height: 500,
+                        child: ListView(
+                          children: [
+                            NamozListTile(
+                              hours: data[thisDay]!.saharlik,
+                              namozTiming: "bomdod".tr(),
+                              actionIcon: IconButton(
+                                onPressed: () {
+                                  log(DateTime.now().day.toString());
+                                  ref
+                                      .read(volumeProvider1.notifier)
+                                      .state = !volumeOnOf1;
+                                },
+                                icon: volumeOnOf1
+                                    ? SvgPicture.asset(
+                                    "assets/svg/volume_on.svg")
+                                    : SvgPicture.asset(
+                                    "assets/svg/volume_off.svg"),
                               ),
-                            );
-                          }
-                        }
+                            ),
+                            NamozListTile(
+                              hours: data[thisDay]!.peshin,
+                              namozTiming: "peshin".tr(),
+                              actionIcon: IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(volumeProvider2.notifier)
+                                      .state = !volumeOnOf2;
+                                },
+                                icon: volumeOnOf2
+                                    ? SvgPicture.asset(
+                                    "assets/svg/volume_on.svg")
+                                    : SvgPicture.asset(
+                                    "assets/svg/volume_off.svg"),
+                              ),
+                            ),
+                            NamozListTile(
+                              hours: data[thisDay]!.asr,
+                              namozTiming: "asr".tr(),
+                              actionIcon: IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(volumeProvider3.notifier)
+                                      .state = !volumeOnOf3;
+                                },
+                                icon: volumeOnOf3
+                                    ? SvgPicture.asset(
+                                    "assets/svg/volume_on.svg")
+                                    : SvgPicture.asset(
+                                    "assets/svg/volume_off.svg"),
+                              ),
+                            ),
+                            NamozListTile(
+                              hours: data[thisDay]!.shom,
+                              namozTiming: "shom".tr(),
+                              actionIcon: IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(volumeProvider5.notifier)
+                                      .state = !volumeOnOf5;
+                                },
+                                icon: volumeOnOf5
+                                    ? SvgPicture.asset(
+                                    "assets/svg/volume_on.svg")
+                                    : SvgPicture.asset(
+                                    "assets/svg/volume_off.svg"),
+                              ),
+                            ),
+                            NamozListTile(
+                                hours: data[thisDay]!.xufton,
+                                namozTiming: "xufton".tr(),
+                                actionIcon: IconButton(
+                                  onPressed: () {
+                                    ref
+                                        .read(volumeProvider4.notifier)
+                                        .state = !volumeOnOf4;
+                                  },
+                                  icon: volumeOnOf4
+                                      ? SvgPicture.asset(
+                                      "assets/svg/volume_on.svg")
+                                      : SvgPicture.asset(
+                                      "assets/svg/volume_off.svg"),
+                                )),
+                          ],
+                        ),
+                      );
                       });
                 }, error: (error, st) {
                   return Text(
