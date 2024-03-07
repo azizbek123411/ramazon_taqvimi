@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
-import 'package:ramazon_taqvimi/src/ui/screens/home_page_screens/notification.dart';
+import 'package:ramazon_taqvimi/src/ui/pages/splash_page/time_location.dart';
+import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/time_settings.dart';
 
 import '../../config/appColors.dart';
 import '../../config/font_size.dart';
@@ -71,20 +71,16 @@ class HomeAppBar extends ConsumerWidget {
           return Text(error.toString());
           // log(error.toString());
         }, loading: (){
-          return const CircularProgressIndicator();
+          log('Waiting');
         }),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       AppRouter.go(context, const NotificationScreen());
-        //     },
-        //     icon: SvgPicture.asset(
-        //       'assets/svg/BellOutline.svg',
-        //       height: 24.h,
-        //       width: 24.w,
-        //     ),
-        //   )
-        // ],
+        actions: [
+          TextButton(onPressed: (){
+            AppRouter.go(context, const TimeSettings());
+          }, child: Text(TimeLocation.controller.text,style: AppTextStyle.instance.w700.copyWith(
+            fontSize: FontSizeConst.instance.largeFont,
+            color: AppColors.whiteColor
+          ),))
+        ],
       ),
     );
   }

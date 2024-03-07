@@ -90,7 +90,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                                     "assets/svg/volume_on.svg")
                                     : SvgPicture.asset(
                                     "assets/svg/volume_off.svg"),
-                              ),
+                              ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
                               hours: data[thisDay]!.peshin,
@@ -106,7 +106,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                                     "assets/svg/volume_on.svg")
                                     : SvgPicture.asset(
                                     "assets/svg/volume_off.svg"),
-                              ),
+                              ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
                               hours: data[thisDay]!.asr,
@@ -122,7 +122,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                                     "assets/svg/volume_on.svg")
                                     : SvgPicture.asset(
                                     "assets/svg/volume_off.svg"),
-                              ),
+                              ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
                               hours: data[thisDay]!.shom,
@@ -138,7 +138,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                                     "assets/svg/volume_on.svg")
                                     : SvgPicture.asset(
                                     "assets/svg/volume_off.svg"),
-                              ),
+                              ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
                                 hours: data[thisDay]!.xufton,
@@ -154,7 +154,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                                       "assets/svg/volume_on.svg")
                                       : SvgPicture.asset(
                                       "assets/svg/volume_off.svg"),
-                                )),
+                                ), color: AppColors.colorF4DEBD,),
                           ],
                         ),
                       );

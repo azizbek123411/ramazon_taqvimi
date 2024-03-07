@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124780220679",
+    "project_id": "r-taqvimi-79b0a",
+    "storage_bucket": "r-taqvimi-79b0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124780220679:android:e670ac87bd8de7533db5a2",
+        "android_client_info": {
+          "package_name": "com.example.ramazon_taqvimi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtVe4puZ58oR_GzZjYus5JoU5ISZwpgyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

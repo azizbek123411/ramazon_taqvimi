@@ -4,6 +4,7 @@ import 'package:ramazon_taqvimi/src/config/appColors.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
+import 'package:ramazon_taqvimi/src/ui/pages/splash_page/time_location.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/azon_settings.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/connect_screen.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/language_settings.dart';
@@ -44,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 color: AppColors.blackColor,
               ),
               onTap: () {
-                AppRouter.go(context, const TimeSettings());
+                AppRouter.go(context, const TimeLocation());
               },
               title: "time_settings".tr(),
             ),

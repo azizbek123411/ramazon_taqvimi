@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,6 +30,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     final provider = ref.watch(namozTimes);
+    int dayIndex=DateTime.now().day-1;
     return Scaffold(
       backgroundColor: AppColors.mainBackground,
       appBar: PreferredSize(
@@ -50,7 +53,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                         return DateTime.now().day != data[index]!.date.day
                             ? DateScreen(
                                 weekday: data[index]!.weekday,
-                                day: data[index]!.date.day.toString(),
+                                day: data[index]!.date.day.toString(), onTap: () {
+                                  setState(() {
+                                    dayIndex=data[index]!.date.day;
+                                    log(dayIndex);
+                                  });
+                        },
                               )
                             : MainGreenButton(
                                 h: 72.h,
@@ -154,7 +162,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                              children: [
                                Text(
-                                 data[1]!.saharlik,
+                                 data[dayIndex]!.saharlik,
                                  style: AppTextStyle.instance.w700.copyWith(
                                      fontSize:
                                      FontSizeConst.instance.mediumFont,
@@ -193,7 +201,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                              children: [
                                Text(
-                                 data[1]!.xufton,
+                                 data[dayIndex]!.xufton,
                                  style: AppTextStyle.instance.w700.copyWith(
                                      fontSize:
                                      FontSizeConst.instance.mediumFont,

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
@@ -6,11 +7,13 @@ import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/main_nav_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/splash_page/scroll_pag.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/splash_page/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ramazon_taqvimi/src/ui/pages/splash_page/time_location.dart';
 
 void main() async {
   await Hive.initFlutter();
   // runApp(const ProviderScope(child: MyApp()));
   WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
@@ -46,6 +49,7 @@ class MyApp extends StatelessWidget {
       routes: {
         ScrollPage.id: (context) => const ScrollPage(),
         MainNavpage.id: (context) => const MainNavpage(),
+        TimeLocation.id: (context) => const TimeLocation(),
       },
     );
   }

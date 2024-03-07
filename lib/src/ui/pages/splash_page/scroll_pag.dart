@@ -5,10 +5,10 @@ import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
+import 'package:ramazon_taqvimi/src/ui/pages/splash_page/time_location.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/main_green_button.dart';
 
 import '../../../config/appColors.dart';
-import '../nav_bar_pages/main_nav_page.dart';
 
 class ScrollPage extends StatefulWidget {
   static const String id = 'scroll';
@@ -63,7 +63,7 @@ class _ScrollPageState extends State<ScrollPage> {
                   ).tr(),
                 ),
                 onTap: () {
-                  AppRouter.id(context, MainNavpage.id);
+                  AppRouter.id(context, TimeLocation.id);
                 })
           ],
         ),

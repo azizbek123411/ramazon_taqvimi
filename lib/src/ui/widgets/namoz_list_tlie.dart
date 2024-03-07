@@ -10,12 +10,13 @@ class NamozListTile extends StatelessWidget {
   Widget actionIcon;
   String namozTiming;
   String hours;
-
+  Color color;
   NamozListTile({
     super.key,
     required this.hours,
     required this.namozTiming,
     required this.actionIcon,
+    required this.color
   });
 
   @override
@@ -26,7 +27,7 @@ class NamozListTile extends StatelessWidget {
       height: 75.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: AppColors.colorF4DEBD,
+        color: color,
       ),
       child: ListTile(
         leading: SvgPicture.asset("assets/svg/sunset.svg"),
