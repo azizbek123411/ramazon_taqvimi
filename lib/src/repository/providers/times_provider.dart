@@ -14,7 +14,9 @@ final namozTimes = FutureProvider<List<PrayModel?>>((ref) async {
 final mosqueProvider=FutureProvider<List<MosqueModel?>>((ref)async{
   return await ApiService.getMosques();
 });
-
+final distanceProvider=FutureProvider<List<MosqueModel>>((ref) async{
+  return await ApiService.calculateDistances();
+});
 
 
 

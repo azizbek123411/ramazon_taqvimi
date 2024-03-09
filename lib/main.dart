@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      // home: const SplashPage(),
-      home:const LocationPage(),
+      home: const SplashPage(),
+      // home:const LocationPage(),
       routes: {
         ScrollPage.id: (context) => const ScrollPage(),
         MainNavpage.id: (context) => const MainNavpage(),

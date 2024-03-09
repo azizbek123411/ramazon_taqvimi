@@ -1,13 +1,10 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http/http.dart';
 import 'package:ramazon_taqvimi/src/repository/providers/times_provider.dart';
-import 'package:ramazon_taqvimi/src/repository/service/api_service.dart';
 class LocationPage extends StatefulHookConsumerWidget {
   const LocationPage({super.key});
 
@@ -21,7 +18,7 @@ class _LocationPageState extends ConsumerState<LocationPage> {
   @override
   Widget build(BuildContext context) {
     final provider=ref.watch(mosqueProvider);
-    final response=get(ApiService.mosqueUrl());
+    final provider2=ref.watch(distanceProvider);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -41,6 +38,18 @@ class _LocationPageState extends ConsumerState<LocationPage> {
             TextButton(onPressed: () {
               log(distanceInMeters.toString());
             }, child: const Text("Calculate"),),
+            provider2.when(data: (data){
+              return SizedBox(
+                height: 100,
+                child: ListView.builder(itemBuilder: (context,index){
+                  return Text(data[index].toString());
+                }),
+              );
+            }, error: (e,st){
+              return Text(e.toString(),);
+            }, loading: (){
+              return const CircularProgressIndicator();
+            })
           ],
         ),
       ),

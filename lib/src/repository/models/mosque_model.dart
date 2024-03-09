@@ -3,14 +3,14 @@ class MosqueModel {
   String name;
   double lat;
   double long;
-  String photoUrl;
+  String? photoUrl;
 
   MosqueModel({
     required this.id,
     required this.name,
     required this.lat,
     required this.long,
-    required this.photoUrl,
+     this.photoUrl,
   });
 
   factory MosqueModel.fromJson(Map<String, dynamic> json) {

@@ -50,13 +50,9 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 200,
-              child: Center(
-                child: Image(
-                  image: AssetImage("assets/images/img.png"),
-                ),
-              ),
+             SizedBox(
+              height: 200.h,
+
             ),
             Container(
                 padding: Dis.only(lr: 20.w, tb: 10.h),

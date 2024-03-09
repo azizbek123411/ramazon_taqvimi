@@ -1,45 +1,77 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:http/http.dart';
 import 'package:ramazon_taqvimi/src/repository/models/mosque_model.dart';
 import 'package:ramazon_taqvimi/src/repository/models/pray_model.dart';
 
 class ApiService {
-
   //https://islomapi.uz/api/monthly?region=Toshkent&month=4
   //https://admin13.uz/api/mosque/
-  static mosqueUrl(){
-    final Uri uri=Uri.parse("https://admin13.uz/api/mosque/");
+  static mosqueUrl() {
+    final Uri uri = Uri.parse("https://admin13.uz/api/mosque/");
     return uri;
-
   }
-  static Future<List<MosqueModel?>> getMosques()async{
-    List<MosqueModel> mosques=[];
-    final response=await get(mosqueUrl());
+
+  static Future<List<MosqueModel?>> getMosques() async {
+    List<MosqueModel> mosques = [];
+    final response = await get(mosqueUrl());
     // log(response.body);
-    if(response.statusCode==200){
-      final dataList=jsonDecode(response.body);
-      for(final item in dataList){
-        try{
+    if (response.statusCode == 200) {
+      final dataList = jsonDecode(response.body);
+      for (final item in dataList) {
+        try {
           mosques.add(MosqueModel.fromJson(item));
-        }catch(e,st){
-          log(e.toString(),stackTrace: st);
+        } catch (e, st) {
+          log(e.toString(), stackTrace: st);
         }
       }
     }
     return mosques;
   }
 
-  static Future calculateDistances()async{
-    List distances=[];
-    final response=await get(mosqueUrl());
+  static Position? currentLocation;
+  late bool servicePermission;
+  late LocationPermission permission;
+
+  Future<Position> getCurrentLocation() async {
+    servicePermission = await Geolocator.isLocationServiceEnabled();
+    if (!servicePermission) {}
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  static Future calculateDistances() async {
+    List<MosqueModel> distances = [];
+    final response = await get(mosqueUrl());
+    if (response.statusCode == 200) {
+      final dataList = jsonDecode(response.body);
+      for (final item in dataList) {
+        try {
+          double distanceInMeters = Geolocator.distanceBetween(
+              ApiService.currentLocation!.latitude,
+              ApiService.currentLocation!.longitude,
+              MosqueModel.fromJson(item).lat,
+              MosqueModel.fromJson(item).long);
+             if(distanceInMeters<=10000){
+               distances.add(MosqueModel.fromJson(item));
+             }
+
+        } catch (e, st) {
+          log(e.toString(), stackTrace: st);
+        }
+      }
+    }
+    return distances;
   }
 
   static resultPath({
     required String city,
     required int month,
-
   }) {
     final Uri uri =
         Uri.parse("https://islomapi.uz/api/monthly?region=$city&month=$month");
