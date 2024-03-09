@@ -8,6 +8,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:ramazon_taqvimi/src/config/appColors.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
 import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
+import 'package:ramazon_taqvimi/src/repository/models/pray_model.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
@@ -25,6 +26,8 @@ class HomePage extends StatefulHookConsumerWidget {
   @override
   ConsumerState<HomePage> createState() => _HomePageState();
 }
+
+
 
 class _HomePageState extends ConsumerState<HomePage> {
   @override
@@ -86,7 +89,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   ],
                                 ),
                                 onTap: () {});
-                      }),
+                      },
+                    // itemCount: 7,
+                      ),
                 ),
                 HBox(16.h),
                 Container(
@@ -145,7 +150,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                  context: context,
                                  builder: (BuildContext context) {
                                    return BottomSheetHOme(
-                                     h: 400.h,
+                                     h: 440.h,
                                      whichPray: 'close_mouth_pray'.tr(),
                                      arabicPray:
                                          'اَللَّهُمَّ لَكَ صُمْتُ وَ بِكَ آمَنْتُ وَ عَلَيْكَ تَوَكَّلْتُ وَ عَلَى رِزْقِكَ أَفْتَرْتُ، فَغْفِرْلِى مَا قَدَّمْتُ وَ مَا أَخَّرْتُ بِرَحْمَتِكَ يَا أَرْحَمَ الرَّاحِمِينَ',

@@ -50,6 +50,8 @@ dependencies:
   url_launcher: ^6.2.5
   firebase_core: ^2.26.0
   firebase_messaging: ^14.7.18
+  geolocator: ^11.0.0
+  geocoding: ^2.2.0
 
 
 dev_dependencies:

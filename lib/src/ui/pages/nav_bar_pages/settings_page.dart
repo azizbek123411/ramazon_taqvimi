@@ -8,7 +8,6 @@ import 'package:ramazon_taqvimi/src/ui/pages/splash_page/time_location.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/azon_settings.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/connect_screen.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/language_settings.dart';
-import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/time_settings.dart';
 import 'package:ramazon_taqvimi/src/ui/widgets/settings_list_tile.dart';
 
 class SettingsPage extends StatefulWidget {

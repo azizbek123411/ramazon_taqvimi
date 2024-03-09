@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:ramazon_taqvimi/location_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/main_nav_page.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/splash_page/scroll_pag.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/splash_page/splash_screen.dart';
@@ -44,8 +45,8 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: const SplashPage(),
-      // home:const NewPage(),
+      // home: const SplashPage(),
+      home:const LocationPage(),
       routes: {
         ScrollPage.id: (context) => const ScrollPage(),
         MainNavpage.id: (context) => const MainNavpage(),

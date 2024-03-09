@@ -96,7 +96,11 @@ class _TimeLocationState extends State<TimeLocation> {
                     ],
                   ),
                   onTap: () {
-                    AppRouter.id(context, MainNavpage.id);
+                    if(TimeLocation.controller.text.isNotEmpty){
+                      AppRouter.id(context, MainNavpage.id);
+                    }else{
+
+                    }
                   }),
             ],
           ),
