@@ -8,7 +8,6 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:ramazon_taqvimi/src/config/appColors.dart';
 import 'package:ramazon_taqvimi/src/config/font_size.dart';
 import 'package:ramazon_taqvimi/src/repository/constants/text_styles.dart';
-import 'package:ramazon_taqvimi/src/repository/models/pray_model.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/app_padding.dart';
 
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
@@ -51,19 +50,26 @@ class _HomePageState extends ConsumerState<HomePage> {
                   height: 90.h,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: data.length,
+                      itemCount: 7,
                       itemBuilder: (context, index) {
-                        return DateTime.now().day != data[index]!.date.day
-                            ? DateScreen(
-                                weekday: data[index]!.weekday,
-                                day: data[index]!.date.day.toString(), onTap: () {
-                                  setState(() {
-                                    dayIndex=data[index]!.date.day;
-                                    log(dayIndex);
-                                  });
-                        },
-                              )
-                            : MainGreenButton(
+
+                         data.removeWhere((element)=> element!.date.day<dayIndex);
+
+
+
+                             return DateTime.now().day != data[index]!.date.day
+                                ? DateScreen(
+                              weekday: data[index]!.weekday,
+                              day: data[index]!.date.day.toString(),
+                              onTap: () {
+                                setState(() {
+                                  dayIndex=data[index]!.date.day;
+
+                                });
+                                log(dayIndex);
+                              },
+                            )
+                                : MainGreenButton(
                                 h: 72.h,
                                 w: 106.w,
                                 radius: 8,
@@ -74,21 +80,22 @@ class _HomePageState extends ConsumerState<HomePage> {
                                       data[index]!.date.day.toString(),
                                       style: AppTextStyle.instance.w700
                                           .copyWith(
-                                              fontSize: FontSizeConst
-                                                  .instance.largeFont,
-                                              color: AppColors.whiteColor),
+                                          fontSize: FontSizeConst
+                                              .instance.largeFont,
+                                          color: AppColors.whiteColor),
                                     ),
                                     Text(
                                       data[index]!.weekday,
                                       style: AppTextStyle.instance.w700
                                           .copyWith(
-                                              fontSize: FontSizeConst
-                                                  .instance.extraSmallFont,
-                                              color: AppColors.whiteColor),
+                                          fontSize: FontSizeConst
+                                              .instance.extraSmallFont,
+                                          color: AppColors.whiteColor),
                                     ),
                                   ],
                                 ),
                                 onTap: () {});
+
                       },
                     // itemCount: 7,
                       ),
@@ -124,7 +131,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                     color: AppColors.blackColor),
                               ).tr(),
                               Text(
-                                "08:00:25",
+                                "08:03",
                                 style: AppTextStyle.instance.w700.copyWith(
                                     fontSize:
                                         FontSizeConst.instance.extraLargeFont,

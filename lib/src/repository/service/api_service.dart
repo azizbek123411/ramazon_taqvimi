@@ -53,14 +53,15 @@ class ApiService {
       for (final item in dataList) {
         try {
           double distanceInMeters = Geolocator.distanceBetween(
-              ApiService.currentLocation!.latitude,
-              ApiService.currentLocation!.longitude,
+              // currentLocation?.latitude??0,
+              // currentLocation?.longitude??0,
+              41.2744398,
+              69.2004313,
               MosqueModel.fromJson(item).lat,
-              MosqueModel.fromJson(item).long);
-             if(distanceInMeters<=10000){
-               distances.add(MosqueModel.fromJson(item));
-             }
-
+              MosqueModel.fromJson(item).long,);
+          if (distanceInMeters <= 3000) {
+            distances.add(MosqueModel.fromJson(item));
+          }
         } catch (e, st) {
           log(e.toString(), stackTrace: st);
         }

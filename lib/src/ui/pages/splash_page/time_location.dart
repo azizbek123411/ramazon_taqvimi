@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
 import 'package:ramazon_taqvimi/src/ui/pages/nav_bar_pages/main_nav_page.dart';
@@ -13,8 +14,9 @@ import '../../../repository/utils/space.dart';
 import '../../widgets/main_green_button.dart';
 
 class TimeLocation extends StatefulWidget {
-  static TextEditingController controller=TextEditingController();
-  static const String id='time';
+  static TextEditingController controller = TextEditingController();
+  static const String id = 'time';
+
   const TimeLocation({super.key});
 
   @override
@@ -22,9 +24,15 @@ class TimeLocation extends StatefulWidget {
 }
 
 class _TimeLocationState extends State<TimeLocation> {
+    final _myBox=Hive.box("address");
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+
+    return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size(double.infinity, 70.h),
           child: Container(
@@ -35,7 +43,7 @@ class _TimeLocationState extends State<TimeLocation> {
                 bottomLeft: Radius.circular(20),
               ),
             ),
-          )),
+          ),),
       backgroundColor: AppColors.mainBackground,
       body: Padding(
         padding: Dis.only(lr: 20.w, tb: 10.h),
@@ -59,9 +67,70 @@ class _TimeLocationState extends State<TimeLocation> {
                 ),
               ).tr(),
               HBox(10.h),
-              TextField(
+              TextField(readOnly: true,
                 controller: TimeLocation.controller,
                 decoration: InputDecoration(
+                  suffixIcon: PopupMenuButton(
+                    surfaceTintColor:AppColors.mainBackground,
+                    icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                    onSelected: (value){
+                      setState(() {
+                        TimeLocation.controller.text=value;
+                      });
+                    },
+                    itemBuilder: (BuildContext context) {
+                      return const [
+                        PopupMenuItem(
+                          value: 'Andijon',
+                          child: Text("Andijon"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Buxoro',
+                          child: Text("Buxoro"),
+                        ),
+                        PopupMenuItem(
+                          value: "Farg'ona",
+                          child: Text("Farg'ona"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Jizzax',
+                          child: Text("Jizzax"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Namangan',
+                          child: Text("Namangan"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Qashqadaryo',
+                          child: Text("Qashqadaryo"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Samarqand',
+                          child: Text("Samarqand"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Guliston',
+                          child: Text("Sirdaryo"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Surxondaryo',
+                          child: Text("Surxondaryo"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Toshkent',
+                          child: Text("Toshkent"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Xiva',
+                          child: Text("Xorazm"),
+                        ),
+                        PopupMenuItem(
+                          value: 'Nukus',
+                          child: Text("Nukus"),
+                        ),
+                      ];
+                    },
+                  ),
                   hintText: TimeLocation.controller.text,
                   hintStyle: AppTextStyle.instance.w500.copyWith(
                       color: AppColors.mainGreen,
@@ -96,11 +165,10 @@ class _TimeLocationState extends State<TimeLocation> {
                     ],
                   ),
                   onTap: () {
-                    if(TimeLocation.controller.text.isNotEmpty){
+                    _myBox.put(1, TimeLocation.controller);
+                    if (TimeLocation.controller.text.isNotEmpty) {
                       AppRouter.id(context, MainNavpage.id);
-                    }else{
-
-                    }
+                    } else {}
                   }),
             ],
           ),

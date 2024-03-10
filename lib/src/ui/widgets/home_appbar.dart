@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ramazon_taqvimi/src/config/router.dart';
 import 'package:ramazon_taqvimi/src/repository/utils/screen_utils.dart';
-import 'package:ramazon_taqvimi/src/ui/pages/splash_page/time_location.dart';
 import 'package:ramazon_taqvimi/src/ui/screens/settings_screens/time_settings.dart';
 
 import '../../config/appColors.dart';
@@ -16,8 +16,11 @@ import '../../repository/utils/app_padding.dart';
 class HomeAppBar extends ConsumerWidget {
   const HomeAppBar({super.key});
 
+
   @override
   Widget build(BuildContext context, ref) {
+    final _mybox=Hive.box("address");
+
     final provider = ref.watch(namozTimes);
     final dayIndex = DateTime.now().day - 1;
     return Container(
@@ -87,11 +90,11 @@ class HomeAppBar extends ConsumerWidget {
                 AppRouter.go(context, const TimeSettings());
               },
               child: Text(
-                TimeLocation.controller.text,
+                _mybox.get(1)??"",
                 style: AppTextStyle.instance.w700.copyWith(
                     fontSize: FontSizeConst.instance.largeFont,
                     color: AppColors.whiteColor),
-              ))
+              ),),
         ],
       ),
     );
