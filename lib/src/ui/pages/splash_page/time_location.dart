@@ -165,7 +165,7 @@ class _TimeLocationState extends State<TimeLocation> {
                     ],
                   ),
                   onTap: () {
-                    _myBox.put(1, TimeLocation.controller);
+                    _myBox.put(1, TimeLocation.controller.text);
                     if (TimeLocation.controller.text.isNotEmpty) {
                       AppRouter.id(context, MainNavpage.id);
                     } else {}

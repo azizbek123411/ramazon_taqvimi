@@ -1,4 +1,5 @@
 
+import 'dart:async';
 import 'dart:math';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -29,6 +30,46 @@ class HomePage extends StatefulHookConsumerWidget {
 
 
 class _HomePageState extends ConsumerState<HomePage> {
+  double percent=0;
+  late Timer timer;
+ static  DateTime saharTime=DateTime(2024,3,12,4,20);
+  final untilSahar=saharTime.difference(DateTime.now());
+  _startTimer(){
+    int timeInMinut=10;
+   int time=timeInMinut*60;
+    double secPercent=(time/100);
+    timer=Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        if(time>0){
+          time--;
+          if(time%60==0){
+            timeInMinut--;
+          }if(time%secPercent==0){
+            if(percent<1){
+              percent+=0.1;
+            }else{
+              percent=1;
+            }
+          }
+        }else{
+          percent=0;
+          timeInMinut=10;
+          timer.cancel();
+        }
+      });
+    });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _startTimer();
+  }
+  String formatDuration(Duration duration){
+    final hours=duration.inHours;
+    final minutes=duration.inMinutes;
+    return "$hours : $minutes";
+  }
   @override
   Widget build(BuildContext context) {
     final provider = ref.watch(namozTimes);
@@ -50,7 +91,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   height: 90.h,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 7,
+                      itemCount: data.length,
                       itemBuilder: (context, index) {
 
                          data.removeWhere((element)=> element!.date.day<dayIndex);
@@ -141,7 +182,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                           ),
                           radius: 150,
                           lineWidth: 30,
-                          percent: 0.2,
+                          percent: percent,
+                          animateFromLastPercent: true,
                           animation: true,
                           circularStrokeCap: CircularStrokeCap.round,
                           backgroundColor: Colors.green.shade200,
@@ -153,6 +195,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                        children: [
                          MainGreenButton(
                            onTap: () {
+                             if(int.parse(data[dayIndex]!.saharlik.split("")[0])==0){
+                               print(true);
+                             }else{
+                               print(false);
+                               print(formatDuration(untilSahar));
+                             }
+                             print(data[dayIndex]!.xufton.split("")[0]+data[dayIndex]!.xufton.split("")[1]);
                              showModalBottomSheet(
                                  context: context,
                                  builder: (BuildContext context) {
@@ -174,7 +223,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                              children: [
                                Text(
-                                 data[dayIndex]!.saharlik,
+                                 data[dayIndex]!.saharlik.toString(),
                                  style: AppTextStyle.instance.w700.copyWith(
                                      fontSize:
                                      FontSizeConst.instance.mediumFont,
@@ -213,7 +262,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                              children: [
                                Text(
-                                 data[dayIndex]!.xufton,
+                                 data[dayIndex]!.xufton.toString(),
                                  style: AppTextStyle.instance.w700.copyWith(
                                      fontSize:
                                      FontSizeConst.instance.mediumFont,

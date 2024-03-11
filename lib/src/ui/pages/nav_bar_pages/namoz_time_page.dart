@@ -72,7 +72,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                         child: ListView(
                           children: [
                             NamozListTile(
-                              hours: data[thisDay]!.saharlik,
+                              hours: data[thisDay]!.saharlik.toString(),
                               namozTiming: "bomdod".tr(),
                               actionIcon: IconButton(
                                 onPressed: () {
@@ -89,7 +89,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                               ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
-                              hours: data[thisDay]!.peshin,
+                              hours: data[thisDay]!.peshin.toString(),
                               namozTiming: "peshin".tr(),
                               actionIcon: IconButton(
                                 onPressed: () {
@@ -105,7 +105,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                               ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
-                              hours: data[thisDay]!.asr,
+                              hours: data[thisDay]!.asr.toString(),
                               namozTiming: "asr".tr(),
                               actionIcon: IconButton(
                                 onPressed: () {
@@ -121,7 +121,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                               ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
-                              hours: data[thisDay]!.shom,
+                              hours: data[thisDay]!.shom.toString(),
                               namozTiming: "shom".tr(),
                               actionIcon: IconButton(
                                 onPressed: () {
@@ -137,7 +137,7 @@ class _NamozTimeState extends ConsumerState<NamozTime> {
                               ), color: AppColors.colorF4DEBD,
                             ),
                             NamozListTile(
-                                hours: data[thisDay]!.xufton,
+                                hours: data[thisDay]!.xufton.toString(),
                                 namozTiming: "xufton".tr(),
                                 actionIcon: IconButton(
                                   onPressed: () {
